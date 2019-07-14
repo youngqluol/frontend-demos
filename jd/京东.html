@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 150px;
+            height: 150px;
+            margin:100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .img1{
+            width: 100%;
+            height: 100%;
+            transition: all 0.75s;   
+            position: relative;         
+        }
+        /* .img1:hover{
+            transform: scale(1.2);
+        } */
+        .play{
+            width: 30px;
+            height: 30px;
+            display: block;
+            border-radius: 100%;
+            position: absolute;
+            left: calc(50% - 15px);
+            top: calc(50% - 15px);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    
+        <div class="wrap">
+            <a href="javascript:;"> 
+                <img src="imgs/300.jpg" class="img1">
+                <img src="imgs/timg.jpg" class="play">
+            </a>       
+            <div class="mask"></div>
+        </div>
+    
+    
+    <script>
+        var div=document.querySelector('.wrap');
+        var play=document.querySelector('.play');
+        var img1=document.querySelector('.img1');
+        div.onmouseover=function(){
+            play.style.width=50+'px';
+            play.style.height=50+'px';
+            play.style.opacity=1;
+            play.style.left= 50+'px';
+            play.style.top= 50+'px';
+            img1.style.width=160+'px';
+            img1.style.height=160+'px';           
+        }
+        div.onmouseout=function(){
+            play.style.width=30+'px';
+            play.style.height=30+'px';
+            play.style.opacity=0;
+            play.style.left= 60+'px';
+            play.style.top= 60+'px';
+            img1.style.width=150+'px';
+            img1.style.height=150+'px';
+        }
+    
+    </script>
+</body>
+</html>
