@@ -17,7 +17,7 @@ export default {
   },
   data () {
     return {
-      msg: '改动之后 git再次提交'
+      msg: '改动之后 git'
     };
   },
   methods: {
