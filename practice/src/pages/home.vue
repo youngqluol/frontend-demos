@@ -17,7 +17,7 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: '改动之后 git再次提交'
     };
   },
   methods: {
