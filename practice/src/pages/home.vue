@@ -17,7 +17,7 @@ export default {
   },
   data () {
     return {
-      msg: '改动之后 git'
+      msg: '这次只提交选择的文件'
     };
   },
   methods: {
