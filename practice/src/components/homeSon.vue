@@ -1,12 +1,13 @@
 <template>
-  <div class="son">homeson</div>
+  <div class="son">homeson
+  </div>
 </template>
 <script>
 export default {
   data () {
-    return {}
+    return {};
   }
-}
+};
 </script>
 <style scoped>
     .son {
