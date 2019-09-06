@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      // 输出pro
+      // let pro =  Promise.resolve('test');
+      // let test = pro.then((res) => {
+      //   console.log('pro');  
+      // })
+      var temp = parseInt(Math.random()*10);
+      // console.log(temp);
+      new Promise((resolve,reject) => {
+        if (temp >5) {
+          console.log(temp);
+          resolve(temp)
+        }else {
+          console.log('reject');
+          // resolve();
+        }
+      })
+      
+      
+    </script>
+</body>
+</html>
