@@ -9,7 +9,13 @@
     <div v-for="(item, index) in arry" :key="index" class="a" @click="showMask(1,$event)">{{item}}
       <div class="mask" v-show="isShow"></div>
     </div>
-
+    <div class="lis">
+      <ul class="container" :style="{left: left + 'px'}">
+      <li><img src="../assets/logo.png" alt=""></li>
+      <li><img src="../assets/logo.png" alt=""></li>
+      <li><img src="../assets/logo.png" alt=""></li>
+    </ul>
+    </div>
   </div>
 </template>
 
@@ -26,8 +32,27 @@ export default {
     return {
       msg: '这次只提交选择的文件',
       isShow: false,
-      arry: ['领取', '领取', '领取']
+      arry: ['领取', '领取', '领取'],
+      timer: null,
+      left: 0
     };
+  },
+  created () {
+    this.timer = setInterval(() => {
+      this.left -= 2;
+      let liWidth = document.querySelectorAll('li')[0].offsetWidth;
+      console.log(document.querySelectorAll('li')[0].offsetWidth);
+      console.log(document.querySelector('.container').style);
+      if (this.left === -liWidth * 2) {
+        console.log('该结束了');
+        clearInterval(this.timer);
+        // document.querySelector('.container').style.overflow = 'scroll';
+        // document.querySelector('.container').style.left = '';
+        // this.left = null;
+        // document.querySelector('.container').style = '';
+        this.left = null;
+      };
+    }, 100);
   },
   methods: {
     // ...mapMutations({a: types.vuexTest}),
@@ -51,9 +76,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
   /* .div {
   } */
+  * {
+    margin: 0;
+    padding: 0;
+  }
   .a {
     width: 100px;
     height: 50px;
@@ -67,5 +96,31 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+  }
+  .hello {
+    // position: relative;
+    .lis {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      overflow: scroll;
+      border: 1px solid red;
+      .container {
+        width: 100px;
+        padding: 0;
+        position: absolute;
+        left: 10px;
+        overflow: scroll;
+          li {
+            display: inline-block;
+            list-style: none;
+            width: 30px;
+            img {
+              display: block;
+              width: 30px;
+            }
+          }
+        }
+      }
   }
 </style>

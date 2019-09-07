@@ -9,7 +9,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
     .son {
       color: blue;
     }
