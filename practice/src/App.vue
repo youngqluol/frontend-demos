@@ -7,6 +7,7 @@
 <script>
 // import types from '@/store/types' 傻子才会写出这行代码（只有是export default 导出的时候才能这么这么写）
 // import * as types from '@/store/types'
+import '@/assets/style/common.css';
 export default {
   name: 'App',
   data () {

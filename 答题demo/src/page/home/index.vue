@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    .home_container{
+    // .home_container{
 
-    }
+    // }
 </style>

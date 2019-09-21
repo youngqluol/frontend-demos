@@ -1,2 +1,2 @@
-export const vuexTest = 'vuexTest'
-export const vuexTest1 = 'vuexTest1'
+export const vuexTest = 'vuexTest';
+export const vuexTest1 = 'vuexTest1';

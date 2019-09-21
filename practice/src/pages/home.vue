@@ -1,41 +1,36 @@
 <template>
   <div class="hello">
-    <home-son>
+    <home-son v-if="false">
     </home-son>
-    <div @click="show"> 1111 </div>
-    <!-- <div class="a" @click="showMask">领取</div>
-    <div class="a">领取</div>
-    <div class="a">领取</div> -->
-    <div v-for="(item, index) in arry" :key="index" class="a" @click="showMask(1,$event)">{{item}}
-      <div class="mask" v-show="isShow"></div>
-    </div>
-
+    <ul class="theme-ul">
+      <li v-for="item in themeHouse" :key="item.id" class="theme-li" @click="goPage(item.route,item.id)">{{item.name}}</li>
+    </ul>
+    <div @click="goRanking">排行榜</div>
+    <ranking v-if="rankingShow" @closeRanking="goRanking"></ranking>
   </div>
+  <!-- <div v-else>22222</div> -->
 </template>
 
 <script>
-import HomeSon from '@/components/homeSon';
+import ranking from '@/components/ranking';
 import { mapMutations, mapActions } from 'vuex';
-// import * as types from '@/store/types'
 export default {
   name: 'home',
   components: {
-    'home-son': HomeSon
+    ranking
   },
   data () {
     return {
+      rankingShow: false,
       msg: '这次只提交选择的文件',
       isShow: false,
-      arry: ['领取', '领取', '领取']
+      arry: ['领取', '领取', '领取'],
+      themeHouse: [{id: 1, name: '旅游', route: 'tour'}, {id: 2, name: '历史', route: 'history'}, {id: 5, name: '美食', route: 'food'}, {id: 4, name: '生活', route: 'life'}, {id: 3, name: '答题', route: 'topic'}]
     };
   },
   methods: {
-    // ...mapMutations({a: types.vuexTest}),
     ...mapMutations(['vuexTest']),
     ...mapActions({b: 'vuexTest1'}),
-    // show () {
-    //   this.vuexTest(3)
-    // }
     show () {
       this.b(2);
     },
@@ -45,15 +40,27 @@ export default {
       }
       this.isShow = true;
       console.log(a);
+    },
+    goPage (route, id) {
+      //  每日可免费参与当日主题馆，若想参与之前的主题馆（例用户在10月2号想参与1号主题馆的活动），需用金币兑换门票
+      if (id > 3) {
+        alert('场馆还未开放');
+      } else if (id < 3) {
+        alert('进入该场馆需要消耗金币');
+      } else {
+        this.$router.push({name: route});
+      }
+    },
+    // 打开、关闭排行榜
+    goRanking () {
+      this.rankingShow = !this.rankingShow;
     }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  /* .div {
-  } */
+<style scoped lang="less">
   .a {
     width: 100px;
     height: 50px;
@@ -67,5 +74,15 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+  }
+  .hello {
+    .theme-ul {
+      .theme-li {
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+        margin: 0 auto;
+      }
+    }
   }
 </style>
