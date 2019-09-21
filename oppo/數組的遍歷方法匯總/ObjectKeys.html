@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 先定義一個數組
+    let arry = [{id: 1, name: '旅遊館', status: '限時開啟'},
+                {id: 2, name: '旅遊館', status: '限時開啟'},
+                {id: 3, name: '旅遊館', status: '限時開啟'},
+                {id: 4, name: '旅遊館', status: '限時開啟'},
+                {id: 5, name: '旅遊館', status: '限時開啟'}
+              ];
+  //  再定義一個對象
+    let obj = {id: 1, name: '旅遊館', status: '限時開啟'};
+
+  //  再定義一個屬性名為數字的對象
+  let obj1 = {100: 1, 0: '旅遊館', 1: '限時開啟'};
+
+  /*
+   如果单纯的想获取对象的属性名，js有原生的Object.keys()方法（低版本IE不兼容）,返回一个由对象的可枚举属性名组成的数组
+  */
+  
+    //  在Object.keys()遍歷數組時:
+    console.log(Object.keys(arry)); //["0", "1", "2", "3", "4"] 返回一個數組
+
+    console.log(arry[Object.keys(arry)[0]]);  //{id: 1, name: "旅遊館", status: "限時開啟"}
+    
+
+    //  在Object.keys()遍歷對象時:
+    console.log(Object.keys(obj)); //["id", "name", "status"] 返回一個數組
+
+    //  在Object.keys()遍歷屬性名為數字的對象時:
+    console.log(Object.keys(obj1)); //["0", "1", "100"] 返回一個數組，從小到大
+    
+</script>
+</body>
+</html>

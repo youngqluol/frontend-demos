@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 先定義一個數組
+    let arry = [{id: 1, name: '旅遊館', status: '限時開啟'},
+                {id: 2, name: '旅遊館', status: '限時開啟'},
+                {id: 3, name: '旅遊館', status: '限時開啟'},
+                {id: 4, name: '旅遊館', status: '限時開啟'},
+                {id: 5, name: '旅遊館', status: '限時開啟'}
+              ];
+    let arry1 = [];
+  /*
+ map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+ 重點：(当数组中元素是值类型，map不会改变原数组；当是引用类型（對象），则可以改变原数组)
+  */
+  
+arry.map((item,index) => {
+  if (index > 2) {
+    return item.name = '歇菜館';
+  }
+  return item;
+}) 
+
+console.log(arry);
+    
+</script>
+</body>
+</html>

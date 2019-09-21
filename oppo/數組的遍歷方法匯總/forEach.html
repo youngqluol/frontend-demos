@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 先定義一個數組
+    let arry = [{id: 1, name: '旅遊館', status: '限時開啟'},
+                {id: 2, name: '旅遊館', status: '限時開啟'},
+                {id: 3, name: '旅遊館', status: '限時開啟'},
+                {id: 4, name: '旅遊館', status: '限時開啟'},
+                {id: 5, name: '旅遊館', status: '限時開啟'}
+              ];
+    let arry1 = [];
+  /*
+ forEach() 方法对数组的每个元素执行一次提供的函数（是數組的方法，並不能遍歷對象，如果是偽數組，可以先轉換為數組，再進行遍歷）。
+ 這個方法，总是返回undefined；(與map方法不一樣，map方法返回的是新數組)
+  */
+  
+  // 它只是对数组中的每一项运行传入的函数
+  // 也就是说，forEach首先对arr数组中的第一项（也就是1，索引为0）的执行函数内的代码，然后对第二项（也就是2，索引为1）执行函数内的代码。。。。直到最后。
+arry.forEach((item,index) => {
+  if (index > 2) {
+    arry1.push(item);
+  }
+}) 
+
+console.log(arry1);
+    
+</script>
+</body>
+</html>

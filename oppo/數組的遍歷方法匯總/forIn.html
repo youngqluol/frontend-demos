@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 先定義一個數組
+    let arry = [{id: 1, name: '旅遊館', status: '限時開啟'},
+                {id: 2, name: '旅遊館', status: '限時開啟'},
+                {id: 3, name: '旅遊館', status: '限時開啟'},
+                {id: 4, name: '旅遊館', status: '限時開啟'},
+                {id: 5, name: '旅遊館', status: '限時開啟'}
+              ];
+  //  再定義一個對象
+    let obj = {id: 1, name: '旅遊館', status: '限時開啟'};
+
+    /*
+    for-in循环是为了遍历对象而设计的，遍歷的是對象的屬性名稱，事实上for-in也能用来遍历数组，一个Array数组实际上也是一个对象，
+    它的每个元素的索引被视为一个属性。但定义的索引i是字符串类型的。如果数组具有一个可枚举的方法，也会被for-in遍历到
+    */
+
+    //  在for in遍歷數組時，a代表的是索引
+    for (let a in arry) {
+      // console.log(a);  //打印索引
+      console.log(arry[a]);  //打印數組的每一項
+    }
+    //  在for in遍歷對象時，a代表的是屬性名
+    for (let a in obj) {
+      // console.log(a);  //打印屬性名
+      console.log(obj[a]);  //打印屬性值
+    }
+</script>
+</body>
+</html>
