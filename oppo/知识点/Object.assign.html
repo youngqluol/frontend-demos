@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+<script>
+    let obj = {
+      a: 1,
+      b: 2,
+      c:3
+    };
+    /*
+    在使用Vue时，有时你可能需要为已有对象赋值多个新属性，比如使用 Object.assign() 或 _.extend()。
+    但是，这样添加到对象上的新属性不会触发更新。在这种情况下，你应该用原对象与要混合进去的对象的属性一起创建一个新的对象。
+    */
+   // 代替 `Object.assign(this.obj, { a: 2, b: 3 })`
+    let obj2 = Object.assign({},obj,{a:2,b:3});
+    console.log(obj2);  
+    // 输出Object
+          // { a: 2,
+          //   b: 3,
+          //   c: 3
+          // } 
+  
+</script>
+</body>
+
+</html>

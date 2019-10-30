@@ -1,5 +1,5 @@
 <template>
-  <div class="son">
+  <div class="son" v-show="value">
     <div class="mask"></div>
     <div class="rank-body">
         这是排行榜数据
@@ -27,6 +27,8 @@
         </ul>
       </div>
     </div>
+    <!-- 在子组件中需要这样写 -->
+    <input :value="value" @input="$emit('input',$event.target.value)">
   </div>
 </template>
 <script>
@@ -40,6 +42,7 @@ export default {
       num: new Date().getDate()
     };
   },
+  props: ['value'], // 在组件上使用v-model
   computed: {
     rankArry ({$store}) {
       return $store.state.rank.rankArry;
@@ -63,6 +66,10 @@ export default {
 <style scoped lang="less">
     .active {
       background: blue;
+    }
+    input {
+      position: absolute;
+        z-index: 999;
     }
     .son {
       // position: absolute;

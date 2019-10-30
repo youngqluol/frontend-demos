@@ -1,34 +1,133 @@
 <template>
   <div class="hello">
-    <home-son v-if="false">
+    <!-- <home-son v-if="false">
     </home-son>
     <ul class="theme-ul">
       <li v-for="item in themeHouse" :key="item.id" class="theme-li" @click="goPage(item.route,item.id)">{{item.name}}</li>
-    </ul>
-    <div @click="goRanking">排行榜</div>
-    <ranking v-if="rankingShow" @closeRanking="goRanking"></ranking>
+    </ul> -->
+    <!-- <div @click="goRanking">排行榜</div> -->
+    <!-- 在组件上使用v-model -->
+    <!-- <ranking v-show="modelData" @closeRanking="goRanking" v-model="modelData"></ranking>
+    <div>{{modelData}}</div> -->
+    <!-- <div v-show="test4">{{test1}}151515151</div> -->
+    <!-- <div>
+      <ul class="theme-ul">
+        <li v-for="item in lightDays" :key="item.id" class="theme-li" @click="sign(item.id)" :class="{'active': item.isLight}"></li>
+      </ul>
+    </div> -->
+    <!-- <div @click="changeSrc" :style="{fontSize: size + 'px'}">点我</div>
+    <div>{{imgSrc}}</div> -->
+    <!-- <img :src="imgSrc"> -->
+    <!-- 自定义事件 -->
+    <font-size @bigFont="bigFontSize" :title.sync="title" camel-data>
+      <!--  slot="slot2" 这个语法已经被废弃了 -->
+      <!-- <div slot="slot2">这是插槽2的</div>
+      <div slot="slot1">这是插槽1的</div> -->
+      <!-- 新的语法如下 -->
+      <div slot="slot2">这是插槽2的</div>
+      <div slot="slot1">这是插槽1的</div>
+    </font-size>
+    <!-- <div>{{title}}</div> -->
   </div>
-  <!-- <div v-else>22222</div> -->
 </template>
 
 <script>
 import ranking from '@/components/ranking';
+import fontSize from '@/components/fontSize';
 import { mapMutations, mapActions } from 'vuex';
 export default {
   name: 'home',
   components: {
-    ranking
+    ranking,
+    fontSize
+  },
+  created () {
+    //  先获取用户的签到记录（返回的签到格式是： ['2019-10-23']）
+    //  截取 日 这一部分，并保存进一个数组：lightStatus
+    //  根据lightStatus 对lightDays这个数组进行处理
+    let temp = this.lightDays.map((item, index) => {
+      for (let value of this.lightStatus) {
+        if (value === item.id) {
+          item.isLight = true;
+        }
+      }
+      return item;
+    });
+    this.lightDays = temp;
+  },
+  mounted () {
+    this.camelData = 'gogo';
+  },
+  computed: {
+    test1 () {
+      return this.test2 + this.test3;
+    },
+    test2 () {
+      return 3;
+    },
+    test3 () {
+      return 3;
+    },
+    test4 () {
+      if (this.a === 3) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   data () {
     return {
+      camelData: '',
+      title: '这是标题',
+      modelData: 1,
+      size: 15,
+      imgSrc: 'http://pic25.nipic.com/20121112/9252150_150552938000_2.jpg',
+      assign: {a: 1, b: 2, c: 3},
+      a: 0,
+      gogo: true,
       rankingShow: false,
       msg: '这次只提交选择的文件',
       isShow: false,
       arry: ['领取', '领取', '领取'],
-      themeHouse: [{id: 1, name: '旅游', route: 'tour'}, {id: 2, name: '历史', route: 'history'}, {id: 5, name: '美食', route: 'food'}, {id: 4, name: '生活', route: 'life'}, {id: 3, name: '答题', route: 'topic'}]
+      // themeHouse: [{id: 1, name: '旅游', route: 'tour'}, {id: 2, name: '历史', route: 'history'}, {id: 5, name: '美食', route: 'food'}, {id: 4, name: '生活', route: 'life'}, {id: 3, name: '答题', route: 'topic'}],
+      lightDays: [{id: 23, isLight: false}, {id: 24, isLight: false}, {id: 25, isLight: false}],
+      lightStatus: [23, 25]
     };
   },
   methods: {
+    bigFontSize (n) { // 这个n 是子组件中传回来的值
+      console.log(this.size);
+      this.size = n;
+    },
+    async changeSrc () {
+      this.imgSrc = 'http://img0.imgtn.bdimg.com/it/u=2854956166,1658664264&fm=26&gp=0.jpg';
+      await this.$nextTick(); //  为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用 Vue.nextTick(callback)
+      console.log(document.querySelector('img').src);
+    },
+    assignObj (a = {}) {
+      for (let key in a) {
+        this.$set(this.assign, key, a[key]);
+      }
+    },
+    sign (day) {
+      if (day === 24) { // 如果是当天
+        let tempArry = this.lightDays.map((item, index) => {
+          if (item.id === 24) {
+            item.isLight = true;
+          }
+          return item;
+        });
+        this.lightDays = tempArry;
+      } else {
+        alert('你只可以点当天的灯并获得抽奖机会');
+      }
+    },
+    go () {
+      setInterval(() => {
+        this.gogo = !this.gogo;
+      }, 1000);
+    },
     ...mapMutations(['vuexTest']),
     ...mapActions({b: 'vuexTest1'}),
     show () {
@@ -61,6 +160,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+  .active {
+    background-color: red;
+  }
   .a {
     width: 100px;
     height: 50px;
