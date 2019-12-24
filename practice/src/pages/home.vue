@@ -28,6 +28,17 @@
       <div slot="slot1">这是插槽1的</div>
     </font-size>
     <!-- <div>{{title}}</div> -->
+    <!-- 本地存储的demo -->
+    <div @click="setItem">先设置一个本地存储</div>
+    <div @click="$router.push('/button')">点击进入button页面</div>
+
+    <!-- 难度选择demo -->
+    <ul class="type-demo">
+      <li v-for="(item, i) in typeArry" :key="i" style="width: 100px;height: 50px;border: 1px solid red;" :class="[chanceArry[i] > 0 ? 'type-li' : 'no-color']" @click="reduceChance(i)">{{item.type}},机会：{{chanceArry[i]}}</li>
+    </ul>
+
+    <!-- 路由demo -->
+    <div @click="routerPush('路由跳转之后传过来的值')">点击跳转</div>
   </div>
 </template>
 
@@ -54,11 +65,28 @@ export default {
       return item;
     });
     this.lightDays = temp;
+    if (!localStorage.getItem('local_chance')) {
+      this.chanceArry = [5, 5, 5];
+      // localStorage.setItem('local_chance', JSON.stringify(temp));
+    } else {
+      this.chanceArry = JSON.parse(localStorage.getItem('local_chance'));
+    };
+    // this.tp = JSON.parse(localStorage.getItem('local_chance'));
   },
   mounted () {
     this.camelData = 'gogo';
   },
   computed: {
+    chanceArry: {
+      get () {
+        return this.tp;
+        // return JSON.parse(localStorage.getItem('local_chance'));
+      },
+      set (newV) {
+        localStorage.setItem('local_chance', JSON.stringify(newV));
+        this.tp = JSON.parse(localStorage.getItem('local_chance'));
+      }
+    },
     test1 () {
       return this.test2 + this.test3;
     },
@@ -78,6 +106,9 @@ export default {
   },
   data () {
     return {
+      // chanceArry: JSON.parse(localStorage.getItem('local_chance')),
+      // 难度选择按钮demo
+      typeArry: [{type: '困难', chance: 5}, {type: '中等', chance: 5}, {type: '简单', chance: 5}],
       camelData: '',
       title: '这是标题',
       modelData: 1,
@@ -92,10 +123,27 @@ export default {
       arry: ['领取', '领取', '领取'],
       // themeHouse: [{id: 1, name: '旅游', route: 'tour'}, {id: 2, name: '历史', route: 'history'}, {id: 5, name: '美食', route: 'food'}, {id: 4, name: '生活', route: 'life'}, {id: 3, name: '答题', route: 'topic'}],
       lightDays: [{id: 23, isLight: false}, {id: 24, isLight: false}, {id: 25, isLight: false}],
-      lightStatus: [23, 25]
+      lightStatus: [23, 25],
+      tp: []
     };
   },
   methods: {
+    reduceChance (i) {
+      // let arry = JSON.parse(localStorage.getItem('local_chance'));
+      let tempArry = this.chanceArry.map((item, index) => {
+        if (index === i) {
+          item--;
+          item = item > 0 ? item : 0;
+        };
+        return item;
+      });
+      // localStorage.setItem('local_chance', JSON.stringify(tempArry));
+      this.chanceArry = tempArry;
+    },
+    // 本地存储
+    setItem () {
+      localStorage.setItem('limit_chance', 'yes');
+    },
     bigFontSize (n) { // 这个n 是子组件中传回来的值
       console.log(this.size);
       this.size = n;
@@ -153,6 +201,11 @@ export default {
     // 打开、关闭排行榜
     goRanking () {
       this.rankingShow = !this.rankingShow;
+    },
+    routerPush (value) {
+      this.$router.push({name: 'filter', params: { id: '123' }}).then(() => {
+        console.log(value);
+      });
     }
   }
 };
@@ -184,6 +237,17 @@ export default {
         height: 50px;
         border: 1px solid red;
         margin: 0 auto;
+      }
+    }
+
+    .type-demo {
+
+      .type-li {
+        background-color: rgb(254,155,68);
+      }
+
+      .no-color {
+        background-color: gray;
       }
     }
   }

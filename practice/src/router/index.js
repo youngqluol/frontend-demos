@@ -12,6 +12,8 @@ const createElement = () => import('@/components/createElement.vue');
 const plugin = () => import('@/components/plugin.vue');
 const filter = () => import('@/components/filter.vue');
 const transitionGroup = () => import('@/components/transitionGroup.vue');
+const button = () => import('@/components/button.vue');
+const ball = () => import('@/components/ball.vue');
 
 Vue.use(Router);
 
@@ -62,7 +64,7 @@ export default new Router({
       component: plugin
     },
     {
-      path: '/filter',
+      path: '/filter/:id',
       name: 'filter',
       component: filter
     },
@@ -70,6 +72,20 @@ export default new Router({
       path: '/transitionGroup',
       name: 'transitionGroup',
       component: transitionGroup
+    },
+    {
+      path: '/button',
+      name: 'button',
+      component: button,
+      beforeEnter: (to, from, next) => { // 路由拦截： 如果有本地存储则跳转，如果没有则跳转首页
+        if (localStorage.getItem('limit_chance')) next();
+        else next({path: '/transitionGroup'});
+      }
+    },
+    {
+      path: '/ball',
+      name: 'ball',
+      component: ball
     }
   ]
 });

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+      /* 
+        Set常用来数组去重
+      */
+    //  方法一
+    //  let arry = [1,1,2,2,3,3];
+    //  console.log(typeof new Set(arry));  // Object 是一个对象
+    //  let newArry = [...new Set(arry)];
+    //  console.log(newArry);
+    
+    //  方法二
+    let arry = [1,1,2,2,3,3];
+    let set = new Set();
+    arry.forEach(item => set.add(item));
+    let newArry = [...set];
+    console.log(newArry);
+    
+    // 方法三 原生去重
+    let arry = [1,1,2,6,6,1,9,5,2];
+    let newArry = [].push(arry[0]);
+    // for (let i = 0; i < arry.length; i++) {
+    //     for (let i = 0; i < newArry.length; i++) {
+
+    //     }
+    // }
+    for (let index in arry) {
+      for (let i = 0; i < newArry.length; i++) {
+        if ()
+      }
+    }
+    
+  </script>
+</body>
+
+</html>

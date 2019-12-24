@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "form-data": "^2.5.1",
     "lodash": "^4.17.15",
     "velocity": "^0.7.2",
     "vue": "^2.5.2",

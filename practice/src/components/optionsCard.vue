@@ -12,8 +12,8 @@
 export default {
   data () {
     return {
-      titles: ['一', '二', '三', '四'],
-      contents: ['111111', '22222', '333333', '44444'],
+      titles: ['简单', '中等', '困难'],
+      contents: ['111111', '22222', '333333'],
       curId: 1
     };
   },
@@ -27,5 +27,12 @@ export default {
 <style lang="less" scoped>
 .active {
   background-color: red;
+}
+li {
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 50px;
 }
 </style>
