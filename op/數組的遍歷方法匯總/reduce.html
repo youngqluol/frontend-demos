@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+  参数：
+  1.回调函数里： 累加器（上一次回调的返回值a）、数组正在处理的元素b、数组正在处理元素的索引c、调用reduce的数组d
+  2.初始值e
+  *初始值是可选的，如果有初始值，则开始时a为e，b为数组的第一个元素
+                  如果没有初始值，则开始时a为数组的第一个元素，b为数组的第二个元素
+  *
+  */
+    //  reduce的集中应用场景
+    // 1.累加数组值
+    [0, 1, 2, 3, 4].reduce(function (accumulator, currentValue, currentIndex, array) {
+      return accumulator + currentValue;
+    });
+    // 2.二维转一维
+    let arry = [
+      [0, 1],
+      [2, 3],
+      [4, 5]
+    ];
+    let newArry = arry.reduce((a, b) => {
+      return a.concat(b);
+    }, []);
+    console.log(newArry);
+    // 3.统计数组中每个元素出现的个数
+    var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+    var countedNames = names.reduce(function (allNames, name) {
+      if (name in allNames) {
+        allNames[name]++;
+      } else {
+        allNames[name] = 1;
+      }
+      return allNames;
+    }, {});
+    console.log(countedNames);
+  </script>
+</body>
+
+</html>

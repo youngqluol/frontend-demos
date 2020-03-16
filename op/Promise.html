@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 輸出：5秒之後打印3
+    //  new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     var a = 3;
+    //     resolve(a);
+    //   },5000);
+    // }).then((res) => {      
+    //     console.log(res);      
+    // })  
+
+    // 1秒鐘后打印1，2秒鐘中后打印2,3秒鐘打印3
+    async function pro() {
+      let a = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(1);
+        },1000)
+      });
+      console.log(a);
+      let b = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(2);
+        },2000)
+      });
+      console.log(b);
+      let c = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(3);
+        },3000)
+      });
+      console.log(c);
+    };
+    pro();
+   
+
+    
+  </script>
+</body>
+</html>

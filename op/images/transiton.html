@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+</head>
+<style>
+  div {
+    position: absolute;
+    left: 500px;
+    /* transition: all 0.9s ease-in-out; */
+  }
+</style>
+<body>
+  <div>看我移动</div>
+  <span style="background-color: yellow">11111</span>
+</body>
+<script>
+    let div = document.querySelectorAll('div')[0];
+    console.log(div);
+    div.addEventListener('click',() => {
+      console.log(div);
+      div.className = 'animated tada';
+    })
+    // let div = document.querySelectorAll('div')[0];
+    // console.log(div);
+    // div.addEventListener('click',() => {
+    //   console.log(div);
+    //   div.style.left = 600 + 'px';
+    // })
+
+
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 先定義一個數組
+    let arry = [{id: 1, name: '旅遊館', status: '限時開啟'},
+                {id: 2, name: '旅遊館', status: '限時開啟'},
+                {id: 3, name: '旅遊館', status: '限時開啟'},
+                {id: 4, name: '旅遊館', status: '限時開啟'},
+                {id: 5, name: '旅遊館', status: '限時開啟'}
+              ];
+  //  再定義一個對象
+    let obj = {id: 1, name: '旅遊館', status: '限時開啟'};
+
+  //  再定義一個屬性值為數字的對象
+  let obj1 = {id: 1, name: 0, status: 2};
+
+  /*
+   如果单纯的想获取对象的属性值，js有原生的Object.values()方法（低版本IE不兼容）,返回一个由对象的可枚举属性值组成的数组
+  */
+  
+    //  在Object.values()遍歷數組時:
+    console.log(Object.values(arry)); // 返回一個數組    
+
+    //  在Object.values()遍歷對象時:
+    console.log(Object.values(obj)); //[1, "旅遊館", "限時開啟"] 返回一個數組
+
+    //  在Object.values()遍歷屬性值為數字的對象時:
+    console.log(Object.values(obj1)); //[1, 0, 2] 返回一個數組
+    
+</script>
+</body>
+</html>

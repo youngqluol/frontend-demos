@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 第一种
+    let obj = {
+      a: 1,
+      get b() {
+        return this.a + 1;
+      },
+      set c(x) {
+        this.a = x;
+      }
+    };
+    console.log(obj.a); //1
+    console.log(obj.b); // 2
+    obj.c = 10;
+    console.log(obj.a); // 10
+    console.log(obj.b); //11
+    console.log(obj.c); // undefined
+    // 第二种
+    let obj2 = {
+      a: 0
+    };
+    Object.defineProperties(o, {
+      "b": {
+        get: function () {
+          return this.a + 1;
+        }
+      },
+      "c": {
+        set: function (x) {
+          this.a = x / 2;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

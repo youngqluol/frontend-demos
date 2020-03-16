@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div style="width: 500px;height: 500px;border: 1px solid red" id="div">测试页面 </div>
+  <script>
+    // let obj = {};
+    // obj['a'] = 'b';
+    // console.log(obj);
+
+    // let times = 4;
+    // setInterval(() => {
+    //   if (times-- < 0) {
+    //     console.log(1);
+    //   }else {
+    //     console.log(2);
+    //   }
+    // },1000)
+
+    /* 数组去重 */
+
+    // let arry = [1,1,22,22,1];
+    // let newArry = [];
+    // for (let value of arry) {
+    //   if (!newArry.includes(value)) {
+    //     newArry.push(value);
+    //   }
+    // } 
+    // console.log(newArry);
+
+      /* 数组对象去重 */
+
+    // let arry = [{id:1},{id:2},{id:3},{id:1},{id:4},{id:4}];
+    // let idArry = [];
+    // let newArry = [];
+    // for (let index in arry) {
+    //   let id = arry[index].id;
+    //   if (!idArry.includes(id)) {
+    //     idArry.push(id);
+    //     newArry.push(arry[index]);
+    //   }
+    // } 
+    // console.log(newArry);
+
+    /* new error */
+    // let e = 1
+    // if (e > 0) {
+    //   throw new Error('error');
+    // } 
+    // var div = document.querySelector("#div");
+    //      div.ontouchmove = function(evt){
+    //         this.innerHTML = `
+    //             touches-length:${evt.touches.length}
+    //             targetTouches-length:${evt.targetTouches.length}
+    //             changedTouches-length:${evt.changedTouches.length}
+    //             `
+    //         console.log(evt);
+    //     }
+      // let a = ['a', 'b'];
+      // let b = [1, 2];
+      let a = [{name: 'a', chance: 1}, {name: 'b', chance: 2}];
+      let obj = {a: 2, b: 3};
+      let newArry = [];
+      for (let index in obj) {
+        newArry.push(obj[index]);
+      }
+      let newA = a.map((item,index) => {
+        item.chance = newArry[index];
+        return item;
+      })
+      console.log(newA);
+  </script>
+</body>
+</html>

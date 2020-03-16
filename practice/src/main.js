@@ -5,12 +5,15 @@ import App from './App';
 import router from './router';
 // Vue.config.productionTip = false
 import store from '@/store';
-
+// 引入全局过滤器
+import vueFilter from './utils/filter.js';
+vueFilter();
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
+  // components: { App },
+  // template: '<App/>',
+  render: h => h(App)
 });

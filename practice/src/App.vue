@@ -7,6 +7,7 @@
 <script>
 // import types from '@/store/types' 傻子才会写出这行代码（只有是export default 导出的时候才能这么这么写）
 // import * as types from '@/store/types'
+import '@/assets/style/common.css';
 export default {
   name: 'App',
   data () {
@@ -31,11 +32,15 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #2c3e50; */
+  /* margin-top: 60px; */
+}
+body {
+  min-height: 1200px;
+  margin: 0;
 }
 </style>
