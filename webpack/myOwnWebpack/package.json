@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.dev.config.js",
-    "build": "webpack --config build/webpack.prod.config.js",
-    "dll": "node build/webpack.dll.config.js"
+    "build": "cross-env NODE_ENV=production node build/webpack.prod.config.js",
+    "dll": "cross-env NODE_ENV=production node build/webpack.dll.config.js"
   },
   "author": "",
   "license": "ISC",

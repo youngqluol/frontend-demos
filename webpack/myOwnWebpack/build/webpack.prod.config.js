@@ -2,9 +2,12 @@ const WebpackCofig = require('./webpack.config');
 const WebpackMerge = require('webpack-merge');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const Webpack = require('webpack');
+const ora = require('ora');
+const chalk = require('chalk');
 const env = process.env.NODE_ENV === 'production';
 
-module.exports = WebpackMerge(WebpackCofig, {
+let prodWebpackConfig = WebpackMerge(WebpackCofig, {
   mode:'production', // 开发模式
   devtool:'cheap-module-source-map', 
   optimization: {    // 自定义js优化配置，将会覆盖默认配置
@@ -61,4 +64,33 @@ module.exports = WebpackMerge(WebpackCofig, {
   },
   plugins: [
   ]
+});
+const startDate = new Date();
+const spinner = ora('building for production...');
+spinner.start();
+
+Webpack(prodWebpackConfig, (err, stats) => {
+  spinner.stop();
+  if(err) throw err;
+
+  process.stdout.write(
+    stats.toString({
+        colors: true,
+        modules: false,
+        children: false,
+        chunks: false,
+        chunkModules: false
+    }) + '\n\n'
+);
+
+  if (stats.hasErrors()) {
+      console.log(chalk.red('  Build failed with errors.\n'));
+      process.exit(1);
+  }
+
+  const endDate = new Date();
+  console.log(chalk.cyan('打包完成了.\n'))
+  console.log(chalk.cyan('开始时间：' + startDate.toLocaleString()));
+  console.log(chalk.cyan('结束时间：' + endDate.toLocaleString()));
+  console.log(chalk.cyan('耗时：' + (endDate.getTime() - startDate.getTime()) / 1000 + 's'));
 })
