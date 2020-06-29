@@ -1,10 +1,14 @@
 <template>
   <div>
-    <input type="checkbox" v-model="allChosen" :value="shopArry" @change="changeAll">
+    <input type="checkbox" v-model="allChosen" :value="shopArry" @change="changeAll" />
     <ul>
       <li v-for="(item, index) in shopCarData" :key="index">
-        <input type="checkbox" v-model="shopArry" :value="item" @change="itemChange(shopArry)">
-        类型：{{item.name}} 价值：{{item.price}} 数量：<button @click="reduce(item)">-</button><input type="text" v-model="item.quality" maxlength="3"><button @click="add(item)">+</button><button @click="deleteItem(index)">删除</button>
+        <input type="checkbox" v-model="shopArry" :value="item" @change="itemChange(shopArry)" />
+        类型：{{item.name}} 价值：{{item.price}} 数量：
+        <button @click="reduce(item)">-</button>
+        <input type="text" v-model="item.quality" maxlength="3" />
+        <button @click="add(item)">+</button>
+        <button @click="deleteItem(index)">删除</button>
       </li>
     </ul>
     {{shopArry}}
@@ -14,15 +18,15 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       // test: true,
       allChosen: false,
       shopArry: [],
       shopCarData: [
-        {name: '卡券', price: 20, quality: 5},
-        {name: '实物', price: 10, quality: 5},
-        {name: '红包', price: 5, quality: 5}
+        { name: "卡券", price: 20, quality: 5 },
+        { name: "实物", price: 10, quality: 5 },
+        { name: "红包", price: 5, quality: 5 }
       ]
     };
   },
@@ -36,7 +40,7 @@ export default {
     // }
   },
   computed: {
-    sunCost () {
+    sunCost() {
       let sumMoney = 0;
       for (let index in this.shopArry) {
         sumMoney += this.shopArry[index].price * this.shopArry[index].quality;
@@ -45,7 +49,7 @@ export default {
     }
   },
   methods: {
-    changeAll () {
+    changeAll() {
       console.log(this.allChosen);
       if (this.allChosen) {
         this.shopArry = this.shopCarData;
@@ -53,7 +57,7 @@ export default {
         this.shopArry = [];
       }
     },
-    itemChange (shopArry) {
+    itemChange(shopArry) {
       if (shopArry.length === this.shopCarData.length) {
         this.allChosen = true;
       } else {
@@ -62,19 +66,19 @@ export default {
       console.log(this.shopArry);
       console.log(this.shopCarData.length);
     },
-    reduce (item) {
+    reduce(item) {
       item.quality--;
       if (item.quality < 1) {
         item.quality = 1;
       }
     },
-    add (item) {
+    add(item) {
       item.quality++;
       if (item.quality > 999) {
         item.quality = 999;
       }
     },
-    deleteItem (index) {
+    deleteItem(index) {
       // let tempArry = this.shopArry.map(item => {
       //   if (this.shopCarData[index].name === item.name) {
 
@@ -94,5 +98,4 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-
 </style>

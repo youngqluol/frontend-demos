@@ -1,7 +1,12 @@
 <template>
   <div>
     <ul>
-      <li v-for="(item, index) in titles" :key="index" :class="{active: index === curId}" @click="tab(index)">{{item}}</li>
+      <li
+        v-for="(item, index) in titles"
+        :key="index"
+        :class="{active: index === curId}"
+        @click="tab(index)"
+      >{{item}}</li>
     </ul>
     <ul>
       <li v-for="(item, index) in contents" :key="index" v-show="index === curId">{{item}}</li>
@@ -10,15 +15,15 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      titles: ['简单', '中等', '困难'],
-      contents: ['111111', '22222', '333333'],
+      titles: ["简单", "中等", "困难"],
+      contents: ["111111", "22222", "333333"],
       curId: 1
     };
   },
   methods: {
-    tab (index) {
+    tab(index) {
       this.curId = index;
     }
   }
