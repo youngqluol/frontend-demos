@@ -6,24 +6,23 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       foo: 20
     };
   },
   directives: {
-    'testDirec': {
-      bind (el, binding) {
+    testDirec: {
+      bind(el, binding) {
         console.log(typeof binding.arg);
         // console.log(el);
         // console.log(binding);
         // el.style.fontSize = binding.value + 'px';
-        el.style.fontSize = binding.arg + 'px';
+        el.style.fontSize = binding.arg + "px";
       }
     }
   }
 };
 </script>
 <style lang="less" scoped>
-
 </style>

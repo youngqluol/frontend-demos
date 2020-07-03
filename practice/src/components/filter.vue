@@ -7,21 +7,24 @@
     </transition>
     <div @click="go = !go">点我</div>
   </div>
-
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       test: 1000,
       go: false
     };
   },
   filters: {
-    testFilter: function (value) {
-      if (value.split('').length > 4) {
-        value = value.split('').slice(0, 4).join('') + '...';
-      };
+    testFilter: function(value) {
+      if (value.split("").length > 4) {
+        value =
+          value
+            .split("")
+            .slice(0, 4)
+            .join("") + "...";
+      }
       return value;
     }
     // test: function (value) {
@@ -36,14 +39,15 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-  .fade-enter, .fade-leave-to {
-      transform: translate(50px, 50px);
-      opacity: 0;
-  }
-  .fade-enter-active {
-      transition: all .5s ease-in;
-  }
-  .fade-leave-active {
-      transition: all .5s ease-out;
-  }
+.fade-enter,
+.fade-leave-to {
+  transform: translate(50px, 50px);
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: all 0.5s ease-in;
+}
+.fade-leave-active {
+  transition: all 0.5s ease-out;
+}
 </style>

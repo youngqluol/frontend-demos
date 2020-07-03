@@ -1,23 +1,21 @@
 <template>
-  <div>
-  </div>
+  <div></div>
 </template>
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 // 使用插件
-import young from '@/utils/plugins';
-Vue.use(young, {name: '传过来的名字'});
+import young from "@/utils/plugins";
+Vue.use(young, { name: "传过来的名字" });
 export default {
-  data () {
+  data() {
     return {
-      title: '这是标题'
+      title: "这是标题"
     };
   },
-  mounted () {
+  mounted() {
     this.$young();
   }
 };
 </script>
 <style lang="less" scoped>
-
 </style>
