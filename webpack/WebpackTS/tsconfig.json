@@ -1,0 +1,38 @@
+{    // 简单来说就是本来需要命令行敲 tsc filename来编译，而有了tsconfig.json就可以简单地tsc，就能根据配置文件自动编译了
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "./dist/",// 打包到的目录
+    "sourceMap": true,// 是否生成sourceMap（用于浏览器调试）
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,// 是否生成声明文件
+    "declarationDir": "./dist/types/",// 声明文件打包的位置
+    "declarationMap": true,// 是否生成声明文件map文件（便于调试）
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es5",// 转化成的目标语言
+    "baseUrl": "./",
+    "types": [
+      "node",
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "jsx": "react",
+    "allowJs": true,
+    "allowSyntheticDefaultImports" : true,  // 允许如import _ from 'lodash';的语法作为一种默认的导入方式
+    "esModuleInterop" : true
+  },
+  "include": [
+    "src/*.ts"
+  ],// 要打包的文件
+  "exclude": [
+    "node_modules",
+    "*.test.ts"
+  ]
+}
