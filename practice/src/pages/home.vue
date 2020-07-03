@@ -130,7 +130,15 @@ export default {
       rankingShow: false,
       msg: "这次只提交选择的文件",
       isShow: false,
+<<<<<<< HEAD
       arry: ["领取", "领取", "领取"],
+=======
+      arry: ['领取', '领取', '领取'],
+<<<<<<< HEAD
+      timer: null,
+      left: 0
+=======
+>>>>>>> 21c7f45a8fe1c343c2579e8071f5bd383269e724
       // themeHouse: [{id: 1, name: '旅游', route: 'tour'}, {id: 2, name: '历史', route: 'history'}, {id: 5, name: '美食', route: 'food'}, {id: 4, name: '生活', route: 'life'}, {id: 3, name: '答题', route: 'topic'}],
       lightDays: [
         { id: 23, isLight: false },
@@ -139,7 +147,25 @@ export default {
       ],
       lightStatus: [23, 25],
       tp: []
+>>>>>>> dev
     };
+  },
+  created () {
+    this.timer = setInterval(() => {
+      this.left -= 2;
+      let liWidth = document.querySelectorAll('li')[0].offsetWidth;
+      console.log(document.querySelectorAll('li')[0].offsetWidth);
+      console.log(document.querySelector('.container').style);
+      if (this.left === -liWidth * 2) {
+        console.log('该结束了');
+        clearInterval(this.timer);
+        // document.querySelector('.container').style.overflow = 'scroll';
+        // document.querySelector('.container').style.left = '';
+        // this.left = null;
+        // document.querySelector('.container').style = '';
+        this.left = null;
+      };
+    }, 100);
   },
   methods: {
     reduceChance(i) {
@@ -229,7 +255,16 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<<<<<<< HEAD
+<style lang="less" scoped>
+  /* .div {
+  } */
+  * {
+    margin: 0;
+    padding: 0;
+=======
 <style scoped lang="less">
+<<<<<<< HEAD
 .active {
   background-color: red;
 }
@@ -254,6 +289,60 @@ export default {
       height: 50px;
       border: 1px solid red;
       margin: 0 auto;
+=======
+  .active {
+    background-color: red;
+>>>>>>> dev
+  }
+  .a {
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+    position: relative;
+  }
+  .a .mask {
+    width: 100px;
+    height: 50px;
+    background: rgba(0,0,0,0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .hello {
+<<<<<<< HEAD
+    // position: relative;
+    .lis {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      overflow: scroll;
+      border: 1px solid red;
+      .container {
+        width: 100px;
+        padding: 0;
+        position: absolute;
+        left: 10px;
+        overflow: scroll;
+          li {
+            display: inline-block;
+            list-style: none;
+            width: 30px;
+            img {
+              display: block;
+              width: 30px;
+            }
+          }
+        }
+      }
+=======
+    .theme-ul {
+      .theme-li {
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+        margin: 0 auto;
+      }
+>>>>>>> 21c7f45a8fe1c343c2579e8071f5bd383269e724
     }
   }
 
@@ -265,6 +354,7 @@ export default {
     .no-color {
       background-color: gray;
     }
+>>>>>>> dev
   }
 }
 </style>
