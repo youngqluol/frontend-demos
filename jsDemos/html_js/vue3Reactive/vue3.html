@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue3.js"></script>
+    </head>
+    <body>
+        <div id="box" style="margin-left: 20px;">
+            <span id="app"></span>
+            <span
+                id="add"
+                style="
+                    margin-left: 10px;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    cursor: pointer;
+                "
+                >+</span
+            >
+        </div>
+        <script>
+            let ele = document.getElementById("app");
+            let btn = document.getElementById("add");
+            let o = {
+                number: 1,
+            };
+            let reactiveData = reactive(o);
+            effect(() => {
+                console.log("数据变了");
+                ele.innerHTML = reactiveData.number;
+            });
+            btn.addEventListener(
+                "click",
+                () => {
+                    reactiveData.number += 1;
+                },
+                false
+            );
+        </script>
+    </body>
+</html>
