@@ -22,6 +22,9 @@
   </div>
 </template>
 <script>
+/*
+fuck Vant
+*/
 const imgNormal = require('../assets/images/normal.png');
 const imgActive = require('../assets/images/praised.png');
 export default {
