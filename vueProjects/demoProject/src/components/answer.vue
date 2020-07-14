@@ -14,57 +14,57 @@
   </div>
 </template>
 <script>
-import { findIndex } from "lodash";
+import { findIndex } from 'lodash';
 export default {
-  data() {
+  data () {
     return {
-      correct: "李元霸",
-      answer: "",
+      correct: '李元霸',
+      answer: '',
       posi: 0,
       quality: 3, //  自定义答案框的个数
       arryChoosen: [],
       arryText: [
-        { id: 1, text: "元" },
-        { id: 2, text: "李" },
-        { id: 3, text: "霸" },
-        { id: 4, text: "郭" },
-        { id: 5, text: "富" },
-        { id: 6, text: "天" },
-        { id: 7, text: "姐" }
+        { id: 1, text: '元' },
+        { id: 2, text: '李' },
+        { id: 3, text: '霸' },
+        { id: 4, text: '郭' },
+        { id: 5, text: '富' },
+        { id: 6, text: '天' },
+        { id: 7, text: '姐' }
       ]
     };
   },
-  created() {
+  created () {
     for (let i = 0; i < this.quality; i++) {
-      this.arryChoosen.push({ text: "" });
+      this.arryChoosen.push({ text: '' });
     }
   },
   methods: {
-    choose(text) {
+    choose (text) {
       // console.log(this.arryChoosen);
       if (this.posi === this.quality - 1) {
         return;
       }
       this.posi = findIndex(this.arryChoosen, item => {
-        return item.text === "";
+        return item.text === '';
       });
       // console.log(position);
       this.arryChoosen[this.posi].text = text;
     },
-    clearArry() {
+    clearArry () {
       for (let i = 0; i < this.quality; i++) {
-        this.arryChoosen[i].text = "";
+        this.arryChoosen[i].text = '';
         this.posi = 0;
       }
     },
-    submit() {
-      this.answer = "";
+    submit () {
+      this.answer = '';
       for (let i = 0; i < this.quality; i++) {
         this.answer += this.arryChoosen[i].text;
       }
       console.log(this.answer);
-      if (this.answer === this.correct) alert("恭喜你答对了");
-      else alert("答错了");
+      if (this.answer === this.correct) alert('恭喜你答对了');
+      else alert('答错了');
     }
   }
 };

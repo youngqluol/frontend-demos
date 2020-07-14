@@ -7,23 +7,23 @@
 <script>
 // import types from '@/store/types' 傻子才会写出这行代码（只有是export default 导出的时候才能这么这么写）
 // import * as types from '@/store/types'
-import "@/assets/style/common.css";
+import '@/assets/style/common.css';
 export default {
-  name: "App",
-  data() {
+  name: 'App',
+  data () {
     return {
       list: []
     };
   },
 
-  beforeCreate() {
+  beforeCreate () {
     // console.log(this.$store)
     // this.$store.commit(types.vuexTest, 1)
     // this.$store.dispatch(types.vuexTest1, 3)
     // console.log(this.$store)
   },
 
-  created() {
+  created () {
     // this.list = this.$store.state.test1.list
     // console.log(this.list)
   }

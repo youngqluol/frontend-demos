@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/pages/home';
+import Home02 from '@/pages/home02';
 // import { Hash } from 'crypto';
 // 路由懒加载
 const Topic = () => import('@/components/answer.vue');
@@ -21,12 +22,17 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/optionsCard'
+      redirect: '/home02'
     },
     {
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/home02',
+      name: 'home02', // TODO
+      component: Home02
     },
     {
       path: '/topic',

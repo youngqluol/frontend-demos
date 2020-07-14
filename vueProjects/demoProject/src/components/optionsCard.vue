@@ -15,15 +15,15 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
-      titles: ["简单", "中等", "困难"],
-      contents: ["111111", "22222", "333333"],
+      titles: ['简单', '中等', '困难'],
+      contents: ['111111', '22222', '333333'],
       curId: 1
     };
   },
   methods: {
-    tab(index) {
+    tab (index) {
       this.curId = index;
     }
   }

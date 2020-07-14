@@ -39,32 +39,32 @@
 </template>
 <script>
 // import * as types from '@/store/types';
-import { mapMutations } from "vuex";
+import { mapMutations } from 'vuex';
 export default {
-  data() {
+  data () {
     return {
       toggle: false,
-      venue: "旅游馆",
+      venue: '旅游馆',
       num: new Date().getDate()
     };
   },
-  props: ["value"], // 在组件上使用v-model
+  props: ['value'], // 在组件上使用v-model
   computed: {
-    rankArry({ $store }) {
+    rankArry ({ $store }) {
       return $store.state.rank.rankArry;
     }
   },
   methods: {
-    ...mapMutations(["getRankArry"]),
-    showAllRank() {
+    ...mapMutations(['getRankArry']),
+    showAllRank () {
       this.toggle = false;
-      this.getRankArry("all");
+      this.getRankArry('all');
       console.log(this.getRankArry);
     },
-    showPartRank() {
+    showPartRank () {
       // console.log('part');
       this.toggle = true;
-      this.getRankArry("tour");
+      this.getRankArry('tour');
     }
   }
 };

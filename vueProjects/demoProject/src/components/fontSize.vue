@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       test: 2
     };
@@ -22,7 +22,7 @@ export default {
   //     default: 'gogogo'
   //   }
   // }
-  props: ["camelData"]
+  props: ['camelData']
 };
 </script>
 <style lang="less" scoped>

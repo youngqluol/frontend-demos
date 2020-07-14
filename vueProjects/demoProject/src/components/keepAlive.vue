@@ -8,22 +8,22 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
-      componentId: "optionsCard"
+      componentId: 'optionsCard'
     };
   },
   components: {
-    optionsCard: () => import("./optionsCard"),
+    optionsCard: () => import('./optionsCard'),
 
-    shopCar: () => import("./shopCar")
+    shopCar: () => import('./shopCar')
   },
   methods: {
-    changeComp() {
-      if (this.componentId === "optionsCard") {
-        this.componentId = "shopCar";
+    changeComp () {
+      if (this.componentId === 'optionsCard') {
+        this.componentId = 'shopCar';
       } else {
-        this.componentId = "optionsCard";
+        this.componentId = 'optionsCard';
       }
     }
   }

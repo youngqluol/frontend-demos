@@ -2,7 +2,7 @@
   <div class="box">
     <transition
       v-for="(ball, index) in balls"
-      :key="ball.id"
+      :key="index"
       name="ballslist"
       @appear="appear"
       @after-appear="afterAppear"
@@ -20,8 +20,8 @@
 
 <script>
 export default {
-  name: "flyball",
-  data() {
+  name: 'flyball',
+  data () {
     return {
       balls: [],
       // 控制小球运动速度
@@ -30,24 +30,24 @@ export default {
       target: { x: 600, y: 600 }
     };
   },
-  mounted() {
+  mounted () {
     this.click2Show();
   },
   methods: {
-    test() {
-      console.log("test");
+    test () {
+      console.log('test');
     },
-    click2Show() {
-      document.body.addEventListener("click", e => {
-        console.log("click");
+    click2Show () {
+      document.body.addEventListener('click', e => {
+        console.log('click');
         this.add(e.pageX, e.pageY);
       });
     },
-    add(x, y) {
+    add (x, y) {
       let balls = this.balls;
       balls.push({ id: new Date().getTime(), x, y, show: true });
     },
-    move(el, x, y, a, done) {
+    move (el, x, y, a, done) {
       let style = el.style;
       // 记录下起始点坐标
       let sx = x;
@@ -61,15 +61,15 @@ export default {
             x += this.speed;
             moveFn(x, y);
           } else {
-            console.log("done");
+            console.log('done');
             done();
           }
         });
       };
       moveFn(x, y);
     },
-    appear(el, done) {
-      console.log("enter");
+    appear (el, done) {
+      console.log('enter');
       let balls = this.balls;
       let target = this.target;
       let id = el.dataset.id;
@@ -88,10 +88,10 @@ export default {
       this.move(el, x, y, a, done);
       // done()
     },
-    afterAppear(el) {
+    afterAppear (el) {
       let balls = this.balls;
       let id = el.dataset.id;
-      console.log("afterEnter", id);
+      console.log('afterEnter', id);
       // 隐藏小球
       for (let i = 0; i < balls.length; i++) {
         if (balls[i].id === id) {

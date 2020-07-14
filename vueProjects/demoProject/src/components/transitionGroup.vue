@@ -31,12 +31,12 @@ export default {
       ]
       // items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
     };
-  },
-  method
-    // shuffle: function () {
-    //   this.items = shuffle(this.items);
-    // }
   }
+  // method
+  //   // shuffle: function () {
+  //   //   this.items = shuffle(this.items);
+  //   // }
+  // }
 };
 </script>
 

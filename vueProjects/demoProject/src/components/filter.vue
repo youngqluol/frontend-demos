@@ -10,20 +10,20 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       test: 1000,
       go: false
     };
   },
   filters: {
-    testFilter: function(value) {
-      if (value.split("").length > 4) {
+    testFilter: function (value) {
+      if (value.split('').length > 4) {
         value =
           value
-            .split("")
+            .split('')
             .slice(0, 4)
-            .join("") + "...";
+            .join('') + '...';
       }
       return value;
     }
