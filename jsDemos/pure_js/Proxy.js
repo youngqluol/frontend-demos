@@ -48,3 +48,4 @@ const proxy = new Proxy(arryObj, handler);
 // proxy[1] = 100;
 // console.log(targetArry);
 // proxy
+// console.log('test');

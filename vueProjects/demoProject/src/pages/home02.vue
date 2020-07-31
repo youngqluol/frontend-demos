@@ -6,7 +6,7 @@
     <van-button type="info">信息按钮</van-button>
     <van-button type="warning">警告按钮</van-button>
     <van-button type="danger">危险按钮</van-button>
-    <div style="width: 21.6rem;height: 2rem;border: 1px solid red;"></div>
+    <div style="width: 10.8rem;height: 2rem;border: 1px solid red;"></div>
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
       <!-- <van-cell v-for="item in list" :key="item" :title="item" /> -->
       <div v-for="item in list" :key="item">{{item}}</div>
