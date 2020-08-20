@@ -9,6 +9,13 @@
   "author": "young",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "yao_webp_converter": "0.0.2"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "cowsay": "^1.4.0",
+    "inquirer": "^7.3.3",
+    "progress": "^2.0.3"
   }
 }
