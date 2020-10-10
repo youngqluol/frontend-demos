@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <td class="tdlh30" style="width: 20%;">配置标题栏底色：</td>
+        <td>
+            #
+            <input
+                type="text"
+                id="tp_color"
+                name="tp_color"
+                maxlength="6"
+                placeholder="#ffffff"
+            />
+        </td>
+        <div
+            id="bg"
+            style="width: 50px; height: 50px; background-color: #ffffff;"
+        ></div>
+        <button class="confirm">确定</button>
+        <button class="clear">清空</button>
+        <div class="url"></div>
+        <script>
+            let webUrl = "http://oppo.com?actId=123&ls=1";
+            let pick = $("#tp_color");
+            let clearButton = $(".clear");
+            let confirmButton = $(".confirm");
+            let url = $(".url");
+            url.text(webUrl);
+            var color = "";
+
+            pick.on("input", function (e) {
+                console.log(e.target.value);
+                $("#bg").css({
+                    "background-color": `#${e.target.value}`,
+                });
+            });
+
+            clearButton.on("click", function () {
+                console.error("clearButton");
+                pick.val("");
+                $("#bg").css({
+                    "background-color": `#ffffff`,
+                });
+                webUrl = deleteParam(webUrl, "tc");
+                url.text(webUrl);
+            });
+
+            confirmButton.on("click", handleColor);
+
+            pick.on("blur", handleColor);
+
+            function handleColor() {
+                if (!pick.val()) {
+                    addParam("ffffff");
+                    $("#bg").css({
+                        "background-color": `#ffffff`,
+                    });
+                    return;
+                }
+                if (!/^[0-9a-fA-F]{6}$/.test(pick.val())) {
+                    console.log("颜色值格式不正确");
+                    return;
+                }
+                console.log("颜色设置成功");
+                addParam(String(pick.val()).toLowerCase());
+            }
+
+            function addParam(color) {
+                if (/tc=/.test(webUrl)) {
+                    webUrl = changeURLArg(webUrl, "tc", color);
+                } else {
+                    webUrl = webUrl + `&tc=${color}`;
+                }
+                url.text(webUrl);
+            }
+
+            function deleteParam(url, name) {
+                var urlparts = url.split("?");
+                console.error("urlparts:", urlparts);
+                if (urlparts.length >= 2) {
+                    //参数名前缀
+                    var prefix = encodeURIComponent(name) + "=";
+                    var pars = urlparts[1].split(/[&;]/g);
+                    //循环查找匹配参数
+                    for (var i = pars.length; i-- > 0; ) {
+                        if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                            //存在则删除
+                            pars.splice(i, 1);
+                        }
+                    }
+                    return (
+                        urlparts[0] +
+                        (pars.length > 0 ? "?" + pars.join("&") : "")
+                    );
+                }
+                console.error("url:", url);
+                return url;
+            }
+
+            function changeURLArg(url, arg, arg_val) {
+                var pattern = arg + "=([^&]*)";
+                var replaceText = arg + "=" + arg_val;
+                if (url.match(pattern)) {
+                    var tmp = "/(" + arg + "=)([^&]*)/gi";
+                    tmp = url.replace(eval(tmp), replaceText);
+                    return tmp;
+                } else {
+                    if (url.match("[\?]")) {
+                        return url + "&" + replaceText;
+                    } else {
+                        return url + "?" + replaceText;
+                    }
+                }
+                return url + "\n" + arg + "\n" + arg_val;
+            }
+        </script>
+    </body>
+</html>
