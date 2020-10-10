@@ -31,6 +31,5 @@ const timer = setInterval(() => {
 
 // 3. 获取cpu核心数
 
-const os = require('os');
-
-console.log(os.cpus());
+// const os = require('os');
+// console.log(os.cpus());
