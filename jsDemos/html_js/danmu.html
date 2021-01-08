@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <!-- <script src="//game.gtimg.cn/images/js/jquery/jquery-1.11.3.min.js"></script> -->
+        <script src="//game.gtimg.cn/images/js/zepto/zepto.min.js"></script>
+
+        <!-- 引入弹幕组件 -->
+        <script src="//game.gtimg.cn/images/js/su/danMu.beta.min.js"></script>
+        <style>
+          .danmustage {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+          }
+        </style>
+    </head>
+    <body>
+        <div class="danmustage"></div>
+        <button id="button1">点击发送弹幕</button>
+        <script>
+            const danmuData = ["111", "222", "22222"];
+            //实例化弹幕
+            var dm = new danMu({
+                device: "m",
+                stage: $(".danmustage"),
+                comments: danmuData,
+                danMuHtml: "<span>{comment}</span>",
+                colors: ["#fff", "#00ccff", "#ff0000", "#00ff00", "#fef500"],
+                flyTime: 7000,
+                timeInterval: 1200,
+                randomSort: true,
+            });
+        </script>
+    </body>
+</html>

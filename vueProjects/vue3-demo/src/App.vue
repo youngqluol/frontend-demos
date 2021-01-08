@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>vue3</div>
-    <HelloWorld />
+    <HelloWorld :msg="'1'" />
   </div>
 </template>
 

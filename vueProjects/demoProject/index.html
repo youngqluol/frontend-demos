@@ -1,13 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0 user-scalable=no maximum-scale=1.0,minimun-scale=1.0">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0 user-scalable=no maximum-scale=1.0,minimun-scale=1.0"
+    />
     <title>practice</title>
+    <!-- <script src="//game.gtimg.cn/images/js/jquery/jquery-1.11.3.min.js"></script> -->
+    <!-- <script src="//game.gtimg.cn/images/js/zepto/zepto.min.js"></script> -->
+    <script src="./src/components/danmu/zepto.min.js"></script>
+    <script src="//game.gtimg.cn/images/js/su/danMu.beta.min.js"></script>
+    <!-- 动态计算REM，根据设计稿上的尺寸（像素）除以100即可得到对应的REM -->
+    <script>
+      !(function(t) {
+        var e = {};
+        function n(r) {
+          if (e[r]) return e[r].exports;
+          var o = (e[r] = { i: r, l: !1, exports: {} });
+          return t[r].call(o.exports, o, o.exports, n), (o.l = !0), o.exports;
+        }
+        (n.m = t),
+          (n.c = e),
+          (n.d = function(t, e, r) {
+            n.o(t, e) ||
+              Object.defineProperty(t, e, {
+                configurable: !1,
+                enumerable: !0,
+                get: r
+              });
+          }),
+          (n.n = function(t) {
+            var e =
+              t && t.__esModule
+                ? function() {
+                    return t.default;
+                  }
+                : function() {
+                    return t;
+                  };
+            return n.d(e, "a", e), e;
+          }),
+          (n.o = function(t, e) {
+            return Object.prototype.hasOwnProperty.call(t, e);
+          }),
+          (n.p = ""),
+          n((n.s = 0));
+      })([
+        function(t, e) {
+          !(function(t, e) {
+            var n = 1080;
+            function r() {
+              var r = ((e.clientWidth < n ? e.clientWidth : n) / n) * 100;
+              o(r);
+              var i = parseFloat(t.getComputedStyle(e)["font-size"]);
+              Math.abs(i - r) > 0.1 && o((r * r) / i);
+            }
+            function o(t) {
+              e.style.fontSize = t + "px";
+            }
+            t.calcRem = function(e) {
+              (n = e), r(), t.addEventListener("resize", r);
+            };
+          })(window, document.documentElement);
+        }
+      ]);
+    </script>
+    <script>
+      calcRem(1080);
+    </script>
   </head>
-   <!-- 动态计算REM，根据设计稿上的尺寸（像素）除以100即可得到对应的REM -->
-   <script>console.log('======rem======');!function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:r})},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=0)}([function(t,e){!function(t,e){var n=1080;function r(){var r=(e.clientWidth<n?e.clientWidth:n)/n*100;o(r);var i=parseFloat(t.getComputedStyle(e)["font-size"]);Math.abs(i-r)>.1&&o(r*r/i)}function o(t){e.style.fontSize=t+"px"}t.calcRem=function(e){n=e,r(),t.addEventListener("resize",r)}}(window,document.documentElement)}]);</script>
-   <script>calcRem(1080)</script>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->

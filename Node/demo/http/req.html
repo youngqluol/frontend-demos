@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="button">点击发起请求</div>
+    </body>
+    <script>
+        let button = document.getElementById('button');
+        button.onclick = get;
+        function get() {
+            let ajax = new XMLHttpRequest();
+            console.log('发起请求');
+
+            ajax.open("get", "search", true);
+            ajax.setRequestHeader("Content-Type", "text/plain");
+            ajax.send();
+
+            ajax.onload = function () {
+                if (ajax.status === 200) {
+                    console.log(`ajax结果：`, ajax.response);
+                    let obj = JSON.parse(ajax.response);
+                    let div = document.createElement('div');
+                    div.innerHTML = obj.msg || '';
+                    button.appendChild(div);
+                } else {
+                    console.log("ajax erro:", ajax.status, ajax.statusText);
+                }
+            };
+
+            ajax.onerror = function() {
+                console.log('fail');
+            }
+        }
+    </script>
+</html>

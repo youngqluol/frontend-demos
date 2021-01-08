@@ -12,10 +12,11 @@ async function fn() {
   }
   console.log(`commitMessage: ${commitMessage}`);
   let res;
+  
   // add
   res = await exec(addCommand);
   if (res.err) {
-    console.log('add err');
+    throw new Error('add err');
   } else {
     console.log('add succ');
   }
@@ -23,7 +24,7 @@ async function fn() {
   // commit
   res = await exec(`${commitCommand}${commitMessage}`)
   if (res.err) {
-    console.log('commit err');
+    throw new Error('commit err');
   } else {
     console.log('commit succ');
   }
@@ -31,10 +32,10 @@ async function fn() {
   // push 
   res = await exec(pushCommand)
   if (res.err) {
-    console.log('push err');
+    throw new Error('push err');
   } else {
     console.log('push finished');
   }
 }
 
-fn('demo');
+fn();

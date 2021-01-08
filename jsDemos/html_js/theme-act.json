@@ -1,0 +1,48 @@
+{
+  "config": {
+    "virtuals": {
+      "card1": {
+        "actUrl": "http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/cdoActivity/staticActivity/X0Oa4w/htmls/X0Oa4w.html?actId=8522&at=1&ta=0&maxage=0&c=0",
+        "name": "瘦瘦卡",
+        "actId": 26952,
+        "secretId": "X0Oa4w",
+        "objectId": 212,
+        "desc": "签到得好礼"
+      },
+      "card2": {
+        "actUrl": "http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/cdoActivity/staticActivity/PZplDw/htmls/PZplDw.html?actId=8525&c=0#/home",
+        "name": "暴富卡",
+        "actId": 26891,
+        "secretId": "PZplDw",
+        "objectId": 213,
+        "desc": "红包大派送"
+      },
+      "card3": {
+        "actUrl": "http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/cdoActivity/staticActivity/wK3kqw/htmls/wK3kqw.html?actId=8542&at=1&ta=0&c=0",
+        "name": "桃花卡",
+        "actId": 26930,
+        "secretId": "wK3kqw",
+        "objectId": 214,
+        "desc": "幸运摇钱树"
+      },
+      "card4": {
+        "actUrl": "http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/cdoActivity/staticActivity/M9AqYM/htmls/M9AqYM.html?actId=8551&at=1&ta=0&c=0#/home",
+        "name": "宝藏卡",
+        "actId": 26890,
+        "secretId": "M9AqYM",
+        "objectId": 215,
+        "desc": "寻找新年快乐"
+      },
+      "card5": {
+        "actUrl": "http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/cdoActivity/staticActivity/MoDlEw/htmls/MoDlEw.html?actId=8481&at=1&ta=0&c=0#/home",
+        "name": "吃货卡",
+        "actId": 26503,
+        "secretId": "MoDlEw",
+        "objectId": 216,
+        "desc": "幸福铃声馆"
+      }
+    },
+    "lotteryActId": "PLe2BM",
+    "mainActId": "Mr86rX"
+  }
+}

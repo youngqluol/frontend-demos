@@ -15,6 +15,7 @@ const filter = () => import('@/components/filter.vue');
 const transitionGroup = () => import('@/components/transitionGroup.vue');
 const button = () => import('@/components/button.vue');
 const ball = () => import('@/components/ball.vue');
+const danmu = () => import('@/pages/danmu.vue');
 
 Vue.use(Router);
 
@@ -22,7 +23,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home02'
+      redirect: '/home'
     },
     {
       path: '/home',
@@ -33,6 +34,11 @@ export default new Router({
       path: '/home02',
       name: 'home02', // TODO
       component: Home02
+    },
+    {
+      path: '/danmu',
+      name: 'danmu', // TODO
+      component: danmu
     },
     {
       path: '/topic',
