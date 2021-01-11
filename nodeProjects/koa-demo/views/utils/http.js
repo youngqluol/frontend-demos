@@ -1,43 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{title}}</title>
-</head>
-<body>
-  {{include './public/header.html'}}
-  <h1>{{content}}</h1>
-  <button id="button">点击get请求</button>
-  <button id="button2">点击post请求</button>
-  {{include './public/footer.html'}}
-</body>
-<script>
-  const button = document.querySelector('#button');
-  const button2 = document.querySelector('#button2');
-  button.addEventListener('click', () => {
-    ajax({
-      type: 'get',
-      url: '/getInfo',
-      data: {
-        name: 'aaaa'
-      }
-    })
-  })
-  button2.addEventListener('click', () => {
-    ajax({
-      type: 'post',
-      url: '/getUserInfo',
-      data: {
-        name: 'aaaa'
-      }
-    })
-  })
 
-  /* 
-  * ajax 方法
-  */
-  const METHOD = {
+const METHOD = {
     GET: 'GET',
     POST: 'POST'
 };
@@ -160,5 +122,3 @@ function addHeader({ xhr, headers }) {
         xhr.setRequestHeader(key, headers[key]);
     }
 }
-</script>
-</html>
