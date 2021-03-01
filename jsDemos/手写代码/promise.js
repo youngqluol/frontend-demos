@@ -4,6 +4,7 @@ class MyPromise {
     this.RESOLVED = 'resolved';
     this.REJECTED = 'rejeced';
     this.status = this.PENDING;
+    const callBacks = [];
     try{
       fn(resolve, reject);
     } catch(e) {
