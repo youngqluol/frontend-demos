@@ -24,3 +24,22 @@ function getlongest(str) {
     };
     return Arrlength;
 }
+
+// 数组和最大的子项
+
+// 1. 粗暴
+function getLargestSemi(arr) {
+    const sumArr = [];
+    arr.forEach((itemI, i) => {
+        arr.forEach((itemJ, j) => {
+            if(i >= j+1) return;
+            const _arr = arr.slice(i, j+1);
+            console.log(_arr);
+            const sum = _arr.reduce((pre,cur) => pre + cur, 0);
+            sumArr.push(sum);
+        })
+    })
+    return Math.max.apply(null, sumArr);
+}
+
+// 2. 有更好的办法 
