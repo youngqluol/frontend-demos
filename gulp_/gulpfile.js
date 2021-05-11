@@ -11,9 +11,20 @@
 // })
 
 // 第二种（官网推荐、最新）
-function defaultTask(cb) {
+async function defaultTask(cb) {
   console.log('starting...');
+  let num = await testPromise();
+  console.log(num);
   cb();
 }
 
+function testPromise() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(11);
+    }, 2000);
+  })
+}
+
 exports.default = defaultTask;
+
