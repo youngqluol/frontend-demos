@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/pages/home';
 import Home02 from '@/pages/home02';
+import Fold from '@/pages/fold';
+
 // import { Hash } from 'crypto';
 // 路由懒加载
 const Topic = () => import('@/components/answer.vue');
@@ -23,7 +25,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/fold'
     },
     {
       path: '/home',
@@ -34,6 +36,11 @@ export default new Router({
       path: '/home02',
       name: 'home02', // TODO
       component: Home02
+    },
+    {
+      path: '/fold',
+      name: 'fold',
+      component: Fold
     },
     {
       path: '/danmu',

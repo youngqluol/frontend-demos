@@ -12,8 +12,8 @@ const debounce = (fn, wait) => {
 const throttle = (fn, wait) => {
   let timer = null;
   return function(...params) {
-    fn(...params);
     if(timer) return;
+    fn(...params);
     timer = setTimeout(() => {
       timer = null;
     }, wait);
