@@ -37,10 +37,12 @@
       <li
         v-for="(item, i) in typeArry"
         :key="i"
-        style="width: 100px;height: 50px;border: 1px solid red;"
+        style="width: 100px; height: 50px; border: 1px solid red"
         :class="[chanceArry[i] > 0 ? 'type-li' : 'no-color']"
         @click="reduceChance(i)"
-      >{{item.type}},机会：{{chanceArry[i]}}</li>
+      >
+        {{ item.type }},机会：{{ chanceArry[i] }}
+      </li>
     </ul>
 
     <!-- 路由demo -->
@@ -56,7 +58,7 @@ export default {
   name: "home",
   components: {
     ranking,
-    fontSize
+    fontSize,
   },
   created() {
     //  先获取用户的签到记录（返回的签到格式是： ['2019-10-23']）
@@ -91,7 +93,7 @@ export default {
       set(newV) {
         localStorage.setItem("local_chance", JSON.stringify(newV));
         this.tp = JSON.parse(localStorage.getItem("local_chance"));
-      }
+      },
     },
     test1() {
       return this.test2 + this.test3;
@@ -108,7 +110,7 @@ export default {
       } else {
         return false;
       }
-    }
+    },
   },
   data() {
     return {
@@ -117,7 +119,7 @@ export default {
       typeArry: [
         { type: "困难", chance: 5 },
         { type: "中等", chance: 5 },
-        { type: "简单", chance: 5 }
+        { type: "简单", chance: 5 },
       ],
       camelData: "",
       title: "这是标题",
@@ -135,10 +137,10 @@ export default {
       lightDays: [
         { id: 23, isLight: false },
         { id: 24, isLight: false },
-        { id: 25, isLight: false }
+        { id: 25, isLight: false },
       ],
       lightStatus: [23, 25],
-      tp: []
+      tp: [],
     };
   },
   methods: {
@@ -223,8 +225,8 @@ export default {
       this.$router.push({ name: "filter", params: { id: "123" } }).then(() => {
         console.log(value);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

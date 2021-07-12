@@ -17,7 +17,7 @@ const filter = () => import('@/components/filter.vue');
 const transitionGroup = () => import('@/components/transitionGroup.vue');
 const button = () => import('@/components/button.vue');
 const ball = () => import('@/components/ball.vue');
-const danmu = () => import('@/pages/danmu.vue');
+const danmu = () => import('@/pages/danmu');
 
 Vue.use(Router);
 
