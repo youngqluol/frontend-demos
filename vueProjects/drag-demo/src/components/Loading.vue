@@ -1,7 +1,7 @@
 <template>
   <div class="loading-page"
-            :class="{'testClass': true}"
-            @click="test()">
+       :class="{'testClass': true}"
+       @click="test()">
     <div class="wrap"></div>
   </div>
 </template>

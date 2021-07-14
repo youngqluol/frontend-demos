@@ -1,41 +1,41 @@
 <template>
-  <div>
-    111
-    {{test | vueFilter}}
-    <transition name="fade">
-      <div v-if="go">看我怎么没的</div>
-    </transition>
-    <div @click="go = !go">点我</div>
-  </div>
+    <div>
+        111
+        {{ test | vueFilter }}
+        <transition name="fade">
+            <div v-if="go">看我怎么没的</div>
+        </transition>
+        <div @click="go = !go">点我</div>
+    </div>
 </template>
 <script>
 export default {
-  data () {
-    return {
-      test: 1000,
-      go: false
-    };
-  },
-  filters: {
-    testFilter: function (value) {
-      if (value.split('').length > 4) {
-        value =
-          value
-            .split('')
-            .slice(0, 4)
-            .join('') + '...';
-      }
-      return value;
-    }
+    filters: {
+        testFilter: function (value) {
+            if (value.split('').length > 4) {
+                value =
+                    value
+                        .split('')
+                        .slice(0, 4)
+                        .join('') + '...';
+            }
+            return value;
+        }
     // test: function (value) {
     //   return value.charAt()
     // }
-  }
-  // async mounted () {
-  //   this.getTableData();
-  //   await this.$nextTick();
-  //   this.dragSort();
-  // }
+    },
+    data () {
+        return {
+            test: 1000,
+            go: false
+        };
+    }
+    // async mounted () {
+    //   this.getTableData();
+    //   await this.$nextTick();
+    //   this.dragSort();
+    // }
 };
 </script>
 <style lang="less" scoped>

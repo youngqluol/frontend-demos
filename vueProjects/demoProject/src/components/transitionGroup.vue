@@ -1,11 +1,14 @@
 <template>
-  <div>
-    <transition-group name="gone" tag="ul">
-      <li v-for="(item, index) in list" :key="item.content" class="liItem">
-        <span :style="{'backgroundColor': item.bg}">{{item.content}}</span>
-        <span @click="list.splice(index, 1)">删除</span>
-      </li>
-    </transition-group>
+    <div>
+        <transition-group name="gone" 
+                          tag="ul">
+            <li v-for="(item, index) in list" 
+                :key="item.content" 
+                class="liItem">
+                <span :style="{'backgroundColor': item.bg}">{{ item.content }}</span>
+                <span @click="list.splice(index, 1)">删除</span>
+            </li>
+        </transition-group>
 
     <!-- <div id="flip-list-demo" class="demo">
   <button v-on:click="shuffle">Shuffle</button>
@@ -15,28 +18,28 @@
     </li>
   </transition-group>
     </div>-->
-  </div>
+    </div>
 </template>
 
 <script>
 // import { shuffle } from 'lodash';
 export default {
-  data () {
-    return {
-      list: [
-        {id: 1, content: '第一行', bg: 'yellow'},
-        {id: 2, content: '第二行', bg: 'green'},
-        {id: 3, content: '第三行', bg: 'pink'},
-        {id: 4, content: '第四行', bg: 'black'}
-      ]
-      // items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    };
-  }
-  // method
-  //   // shuffle: function () {
-  //   //   this.items = shuffle(this.items);
-  //   // }
-  // }
+    data () {
+        return {
+            list: [
+                {id: 1, content: '第一行', bg: 'yellow'},
+                {id: 2, content: '第二行', bg: 'green'},
+                {id: 3, content: '第三行', bg: 'pink'},
+                {id: 4, content: '第四行', bg: 'black'}
+            ]
+            // items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        };
+    }
+    // method
+    //   // shuffle: function () {
+    //   //   this.items = shuffle(this.items);
+    //   // }
+    // }
 };
 </script>
 
