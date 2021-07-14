@@ -9,6 +9,7 @@ module.exports = {
     browser: true
   },
   extends: ['standard', 'plugin:vue/recommended'],
+  plugins: ['vue'],
   rules: {
     'arrow-parens': 0, // allow paren-less arrow functions
     'generator-star-spacing': 0, // 允许 async-await
