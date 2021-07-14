@@ -34,7 +34,6 @@
         <div @click="setItem">先设置一个本地存储</div>
         <div @click="$router.push('/button')">点击进入button页面</div>
 
-<<<<<<< HEAD
     <!-- 难度选择demo -->
     <ul class="type-demo">
       <li
@@ -47,20 +46,6 @@
         {{ item.type }},机会：{{ chanceArry[i] }}
       </li>
     </ul>
-=======
-        <!-- 难度选择demo -->
-        <ul :style="{ height:'2rem'}" 
-            class="type-demo">
-            <li
-                v-for="(item, i) in typeArry"
-                :key="i"
-                :style="{width:0 }"
-                :class="[chanceArry[i] > 0 ? 'type-li' : 'no-color']"
-                @click="reduceChance(i)"
-                style="width: 100px;height: 50px;border: 1px solid red;"
-            >{{ item.type }},机会：{{ chanceArry[i] }}</li>
-        </ul>
->>>>>>> 2c5a156c591073f24d0d154a33a0f4c202b0ea28
 
         <!-- 路由demo -->
         <div @click="routerPush('路由跳转之后传过来的值')">点击跳转</div>
@@ -72,7 +57,6 @@ import ranking from "@/components/ranking";
 import fontSize from "@/components/fontSize";
 import { mapMutations, mapActions } from "vuex";
 export default {
-<<<<<<< HEAD
   name: "home",
   components: {
     ranking,
@@ -118,12 +102,6 @@ export default {
     },
     test2() {
       return 3;
-=======
-    name: "Home",
-    components: {
-        ranking,
-        fontSize
->>>>>>> 2c5a156c591073f24d0d154a33a0f4c202b0ea28
     },
     data() {
         return {
@@ -156,7 +134,6 @@ export default {
             tp: []
         };
     },
-<<<<<<< HEAD
     test4() {
       if (this.a === 3) {
         return true;
@@ -203,34 +180,6 @@ export default {
         if (index === i) {
           item--;
           item = item > 0 ? item : 0;
-=======
-    computed: {
-        chanceArry: {
-            get() {
-                return this.tp;
-                // return JSON.parse(localStorage.getItem('local_chance'));
-            },
-            set(newV) {
-                localStorage.setItem("local_chance", JSON.stringify(newV));
-                this.tp = JSON.parse(localStorage.getItem("local_chance"));
-            }
-        },
-        test1() {
-            return this.test2 + this.test3;
-        },
-        test2() {
-            return 3;
-        },
-        test3() {
-            return 3;
-        },
-        test4() {
-            if (this.a === 3) {
-                return true;
-            } else {
-                return false;
-            }
->>>>>>> 2c5a156c591073f24d0d154a33a0f4c202b0ea28
         }
     },
     created() {
@@ -257,14 +206,6 @@ export default {
     mounted() {
         this.camelData = "gogo";
     },
-<<<<<<< HEAD
-    routerPush(value) {
-      this.$router.push({ name: "filter", params: { id: "123" } }).then(() => {
-        console.log(value);
-      });
-    },
-  },
-=======
     methods: {
         reduceChance(i) {
             // let arry = JSON.parse(localStorage.getItem('local_chance'));
@@ -349,7 +290,6 @@ export default {
             });
         }
     }
->>>>>>> 2c5a156c591073f24d0d154a33a0f4c202b0ea28
 };
 </script>
 
