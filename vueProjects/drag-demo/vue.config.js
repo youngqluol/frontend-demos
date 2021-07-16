@@ -1,4 +1,6 @@
 const FileManagerPlugin = require('filemanager-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const projectName = require('./package.json').name;
 const fileManagerPlugin = new FileManagerPlugin({
   events: {
@@ -13,10 +15,23 @@ const fileManagerPlugin = new FileManagerPlugin({
     }
   }
 });
+const plugins = [];
+
+const arg = process.argv.slice(2);
+console.log('arg:', arg);
+
+console.log(process.env.npm_config_zip); // npm run build --zip 时为true
+console.log(process.env.npm_config_report); // npm run build --report 时为true
+if(process.env.npm_config_zip) {
+  plugins.push(fileManagerPlugin);
+};
+if(process.env.npm_config_report) {
+  plugins.push(new BundleAnalyzerPlugin());
+}
 
 module.exports = {
   configureWebpack: {
-    plugins: [fileManagerPlugin]
+    plugins
   },
   chainWebpack: config => {
     config.module

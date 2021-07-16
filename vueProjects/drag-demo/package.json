@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build:zip": "vue-cli-service zip:build",
+    "build": "vue-cli-service build --no-clean",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -13,7 +12,8 @@
     "element-ui": "^2.15.3",
     "filemanager-webpack-plugin": "^6.1.4",
     "vue": "^2.6.11",
-    "vue-cli-plugin-build-zip": "0.0.3"
+    "vue-cli-plugin-build-zip": "0.0.3",
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
