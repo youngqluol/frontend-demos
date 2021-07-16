@@ -4,13 +4,13 @@
         <div class="mask"></div>
         <div class="rank-body">
             这是排行榜数据
-            <div @click="$emit('closeRanking')" 
-                 class="close">点击我关闭排行榜弹窗</div>
+            <div class="close" 
+                 @click="$emit('closeRanking')">点击我关闭排行榜弹窗</div>
             <ul class="ranking-title">
-                <li @click="showPartRank" 
-                    :class="{active: toggle}">分馆排行</li>
-                <li @click="showAllRank" 
-                    :class="{active: !toggle}">总馆排行</li>
+                <li :class="{active: toggle}" 
+                    @click="showPartRank">分馆排行</li>
+                <li :class="{active: !toggle}" 
+                    @click="showAllRank">总馆排行</li>
             </ul>
             <div v-if="toggle" 
                  class="container">
@@ -49,6 +49,7 @@
 // import * as types from '@/store/types';
 import { mapMutations } from 'vuex';
 export default {
+<<<<<<< HEAD
     props: {
         value: {
             type: String,
@@ -57,6 +58,9 @@ export default {
             }
         }
     },
+=======
+    props: ['value'],
+>>>>>>> 6882fc77aba5b9f9bd0519c1fe5115ca0b30ce36
     data () {
         return {
             toggle: false,

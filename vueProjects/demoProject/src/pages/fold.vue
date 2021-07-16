@@ -5,8 +5,8 @@
         </div>
         <button @click="handle">insertText</button>
         <div id="box"></div>
-        <div v-html="text2"
-             id="box2"></div>
+        <div id="box2"
+             v-html="text2"></div>
     </div>
 </template>
 <script>

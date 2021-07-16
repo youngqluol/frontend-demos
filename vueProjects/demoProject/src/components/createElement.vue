@@ -8,7 +8,7 @@ export default {
             title: '这是标题'
         };
     },
-    render(createElement) {
+    render (createElement) {
         return createElement('h1', this.title);
     }
     // render: function (createElement) {

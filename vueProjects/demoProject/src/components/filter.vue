@@ -11,18 +11,19 @@
 <script>
 export default {
     filters: {
-        // testFilter: function (value) {
-        //     if (value.split('').length > 4) {
-        //         value =
-        //             value
-        //                 .split('')
-        //             .slice(0, 4).join('') + '...';
-        //     }
-        //     return value;
-        // }
-        // test: function (value) {
-        //   return value.charAt()
-        // }
+        testFilter: function (value) {
+            if (value.split('').length > 4) {
+                value =
+                    value
+                        .split('')
+                        .slice(0, 4)
+                    .join('') + '...';
+            }
+            return value;
+        }
+    // test: function (value) {
+    //   return value.charAt()
+    // }
     },
     data () {
         return {
