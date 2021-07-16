@@ -7,8 +7,8 @@ import rank from './modules/rank.js';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: {
-    test1,
-    rank
-  }
+    modules: {
+        test1,
+        rank
+    }
 });

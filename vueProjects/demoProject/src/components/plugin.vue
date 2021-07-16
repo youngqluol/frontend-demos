@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+    <div></div>
 </template>
 <script>
 import Vue from 'vue';
@@ -7,14 +7,14 @@ import Vue from 'vue';
 import young from '@/utils/plugins';
 Vue.use(young, { name: '传过来的名字' });
 export default {
-  data () {
-    return {
-      title: '这是标题'
-    };
-  },
-  mounted () {
-    this.$young();
-  }
+    data () {
+        return {
+            title: '这是标题'
+        };
+    },
+    mounted () {
+        this.$young();
+    }
 };
 </script>
 <style lang="less" scoped>
