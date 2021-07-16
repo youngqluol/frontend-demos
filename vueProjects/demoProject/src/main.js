@@ -13,6 +13,19 @@ Vue.use(Button);
 Vue.use(List);
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.config.errorHandler = function (err, vm, info) {
+    console.log('Vue Error ========= start');
+    console.log(err);
+    console.log(info);
+    console.log('Vue Error ========= end');
+};
+Vue.config.warnHandler = function (msg, vm, trace) {
+    console.log('Vue Warning ========= start');
+    console.log(msg);
+    console.log(trace);
+    console.log('Vue Warning ========= end');
+};
+Vue.config.devtools = process.env.NODE_ENV !== 'production';
 
 /* eslint-disable no-new */
 new Vue({

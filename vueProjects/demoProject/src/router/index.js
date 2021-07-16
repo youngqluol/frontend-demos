@@ -18,93 +18,99 @@ const transitionGroup = () => import('@/components/transitionGroup.vue');
 const button = () => import('@/components/button.vue');
 const ball = () => import('@/components/ball.vue');
 const danmu = () => import('@/pages/danmu.vue');
+const demos = () => import('@/pages/demos.vue');
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      redirect: '/fold'
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/home02',
-      name: 'home02', // TODO
-      component: Home02
-    },
-    {
-      path: '/fold',
-      name: 'fold',
-      component: Fold
-    },
-    {
-      path: '/danmu',
-      name: 'danmu', // TODO
-      component: danmu
-    },
-    {
-      path: '/topic',
-      name: 'topic',
-      component: Topic
-    },
-    {
-      path: '/optionsCard',
-      name: 'optionsCard',
-      component: optionsCard
-    },
-    {
-      path: '/shopCar',
-      name: 'shopCar',
-      component: shopCar
-    },
-    {
-      path: '/keepAlive',
-      name: 'keepAlive',
-      component: keepAlive
-    },
-    {
-      path: '/directive',
-      name: 'directive',
-      component: directive
-    },
-    {
-      path: '/createElement',
-      name: 'createElement',
-      component: createElement
-    },
-    {
-      path: '/plugin',
-      name: 'plugin',
-      component: plugin
-    },
-    {
-      path: '/filter/:id',
-      name: 'filter',
-      component: filter
-    },
-    {
-      path: '/transitionGroup',
-      name: 'transitionGroup',
-      component: transitionGroup
-    },
-    {
-      path: '/button',
-      name: 'button',
-      component: button,
-      beforeEnter: (to, from, next) => { // 路由拦截： 如果有本地存储则跳转，如果没有则跳转首页
-        if (localStorage.getItem('limit_chance')) next();
-        else next({path: '/transitionGroup'});
-      }
-    },
-    {
-      path: '/ball',
-      name: 'ball',
-      component: ball
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            redirect: '/home'
+        },
+        {
+            path: '/home',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/home02',
+            name: 'home02',
+            component: Home02
+        },
+        {
+            path: '/fold',
+            name: 'fold',
+            component: Fold
+        },
+        {
+            path: '/danmu',
+            name: 'danmu',
+            component: danmu
+        },
+        {
+            path: '/topic',
+            name: 'topic',
+            component: Topic
+        },
+        {
+            path: '/optionsCard',
+            name: 'optionsCard',
+            component: optionsCard
+        },
+        {
+            path: '/shopCar',
+            name: 'shopCar',
+            component: shopCar
+        },
+        {
+            path: '/keepAlive',
+            name: 'keepAlive',
+            component: keepAlive
+        },
+        {
+            path: '/directive',
+            name: 'directive',
+            component: directive
+        },
+        {
+            path: '/createElement',
+            name: 'createElement',
+            component: createElement
+        },
+        {
+            path: '/plugin',
+            name: 'plugin',
+            component: plugin
+        },
+        {
+            path: '/filter/:id',
+            name: 'filter',
+            component: filter
+        },
+        {
+            path: '/transitionGroup',
+            name: 'transitionGroup',
+            component: transitionGroup
+        },
+        {
+            path: '/button',
+            name: 'button',
+            component: button,
+            beforeEnter: (to, from, next) => { // 路由拦截： 如果有本地存储则跳转，如果没有则跳转首页
+                if (localStorage.getItem('limit_chance')) next();
+                else next({path: '/transitionGroup'});
+            }
+        },
+        {
+            path: '/ball',
+            name: 'ball',
+            component: ball
+        },
+        {
+            path: 'demos',
+            name: 'demos',
+            component: demos
+        }
+    ]
 });
