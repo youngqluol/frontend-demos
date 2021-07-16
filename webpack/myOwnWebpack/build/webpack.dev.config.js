@@ -9,7 +9,10 @@ module.exports = WebpackMerge(WebpackCofig, {
     port: 8000,
     hot: true,
     open: true,  // 自动打开浏览器
-    contentBase: '../dist'
+    contentBase: '../dist',
+    proxy: { // 配置跨域
+
+    }
   },
   plugins: [
     new Webpack.HotModuleReplacementPlugin()   // 热更新热部署

@@ -1,7 +1,7 @@
 <template>
     <div>
         <keep-alive>
-            <!-- <component :is="componentId"></component> -->
+            <component :is="componentId"></component>
         </keep-alive>
         <div @click="changeComp">点击切换组件</div>
     </div>

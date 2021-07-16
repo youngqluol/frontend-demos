@@ -11,12 +11,13 @@
 <script>
 export default {
     inheritAttrs: false,
-    props: {
-        camelData: {
-            type: String,
-            default: 'gogogo'
-        }
-    },
+    // props: {
+    //   camelData: {
+    //     type: String,
+    //     default: 'gogogo'
+    //   }
+    // }
+    props: ['camelData'],
     data () {
         return {
             test: 2

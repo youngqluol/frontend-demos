@@ -10,8 +10,8 @@
         </ul>
         <ul>
             <li v-for="(item, index) in contents" 
-                :key="index" 
-                v-show="index === curId">{{ item }}</li>
+                v-show="index === curId" 
+                :key="index">{{ item }}</li>
         </ul>
     </div>
 </template>
