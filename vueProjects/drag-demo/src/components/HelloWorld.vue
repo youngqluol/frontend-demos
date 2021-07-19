@@ -37,6 +37,7 @@
 </template>
 <script>
 export default {
+  name: 'hello-world',
   data() {
     return {
       dynamicValidateForm: {
