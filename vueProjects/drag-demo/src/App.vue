@@ -1,30 +1,26 @@
 <template>
-  <hello-world></hello-world>
+  <div class="page-app">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-
 export default {
   name: 'App',
   components: {
-    HelloWorld
+  },
+  beforeCreate() {
+    if(this.$route.name !== 'home') {
+      this.$router.push({ name: 'home' });
+    }
   },
   methods: {
     test() {
-      console.log(a);
     }
   }
 };
 </script>
 
-<style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+<style lang="less" scoped>
+
 </style>

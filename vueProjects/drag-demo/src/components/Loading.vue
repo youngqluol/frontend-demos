@@ -17,7 +17,7 @@ export default {
 
   methods: {
     test() {
-      console.log(arguments);
+      console.log();
     }
   }
 };

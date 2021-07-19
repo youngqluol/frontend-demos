@@ -1,3 +1,4 @@
+const path = require('path');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -15,13 +16,12 @@ const fileManagerPlugin = new FileManagerPlugin({
     }
   }
 });
+// const arg = process.argv.slice(2);
+// console.log('arg:', arg);
+
+// console.log(process.env.npm_config_zip); // npm run build --zip 时为true
+// console.log(process.env.npm_config_report); // npm run build --report 时为true
 const plugins = [];
-
-const arg = process.argv.slice(2);
-console.log('arg:', arg);
-
-console.log(process.env.npm_config_zip); // npm run build --zip 时为true
-console.log(process.env.npm_config_report); // npm run build --report 时为true
 if(process.env.npm_config_zip) {
   plugins.push(fileManagerPlugin);
 };
@@ -31,7 +31,17 @@ if(process.env.npm_config_report) {
 
 module.exports = {
   configureWebpack: {
-    plugins
+    plugins,
+    resolve: {
+      extensions: ['.js', '.vue', '.json'],
+      alias: {
+        '@src': resolve('./src')
+      }
+    }
+  },
+  devServer: {
+    open: true,
+    progress: true
   },
   chainWebpack: config => {
     config.module
@@ -45,11 +55,6 @@ module.exports = {
   }
 };
 
-function formatDate() {
-  const year = new Date().getFullYear();
-  const month = new Date().getMonth() + 1 > 10 ? new Date().getMonth() : '0' + (new Date().getMonth() + 1);
-  const day = new Date().getDate() > 10 ? new Date().getDate() : '0' + new Date().getDate();
-  const hour = new Date().getHours() > 10 ? new Date().getHours() : '0' + new Date().getHours();
-  const minute = new Date().getMinutes() > 10 ? new Date().getMinutes() : '0' + new Date().getMinutes();
-  return year + month + day + hour + minute;
-}
+function resolve(dir) {
+  return path.resolve(__dirname, dir);
+};
