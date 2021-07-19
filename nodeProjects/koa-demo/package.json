@@ -11,7 +11,7 @@
   "dependencies": {
     "@koa/cors": "2",
     "art-template": "^4.13.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bunyan": "^1.8.12",
     "dotenv": "^6.0.0",
     "elastic-apm-node": "^1.8.3",
