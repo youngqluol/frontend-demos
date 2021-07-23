@@ -10,7 +10,7 @@ const fileManagerPlugin = new FileManagerPlugin({
         `./dist/dist.zip`
       ],
       archive: [
-        {source: `./dist`, destination: `./dist/dist.zip`}
+        {source: `./dist/dist`, destination: `./dist/dist.zip`}
       ]
     }
   }
@@ -30,6 +30,7 @@ if(process.env.npm_config_report) {
 }
 
 module.exports = {
+  outputDir: './dist/dist',
   configureWebpack: {
     plugins
   },
