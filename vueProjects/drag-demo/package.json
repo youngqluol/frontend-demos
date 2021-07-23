@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --no-clean",
+    "build:clean": "vue-cli-service build --no-clean",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -13,6 +14,7 @@
     "filemanager-webpack-plugin": "^6.1.4",
     "vue": "^2.6.11",
     "vue-cli-plugin-build-zip": "0.0.3",
+    "wangeditor": "^4.7.5",
     "webpack-bundle-analyzer": "^4.4.2"
   },
   "devDependencies": {

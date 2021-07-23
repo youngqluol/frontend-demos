@@ -1,19 +1,18 @@
 <template>
-  <hello-world></hello-world>
+  <wang-editor />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+// import HelloWorld from './components/HelloWorld.vue';
+import WangEditor from './components/WangEditor.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld
+    WangEditor
   },
   methods: {
-    test() {
-      console.log(a);
-    }
   }
 };
 </script>
