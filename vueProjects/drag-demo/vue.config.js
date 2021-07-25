@@ -41,8 +41,21 @@ module.exports = {
     }
   },
   devServer: {
+    host: 'localhost', // 指定要使用的 host。如果你希望服务器可从外部访问
+    port: 8080,
     open: true,
-    progress: true
+    progress: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        pathRewrite: { '^/api': '' },
+        ws: true,
+        changeOrigin: true,
+        headers: {
+          Connection: 'keep-alive'
+        }
+      }
+    }
   },
   chainWebpack: config => {
     config.module

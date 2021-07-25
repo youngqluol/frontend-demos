@@ -1,6 +1,7 @@
 import axios from 'axios';
+import qs from 'qs';
 
-const baseURL = '/api';
+const baseURL = 'api';
 const timeout = 5000;
 
 const config = {
@@ -20,44 +21,57 @@ const instance = axios.create(config);
 // 请求拦截
 instance.interceptors.request.use(
   config => {
-    if (config.method.toLocaleLowerCase() === 'get') {
-    }
-
-    return config;
+    let _config = checkUrl(config);
+    _config = checkContentType(_config);
+    return _config;
   },
   error => {
     return Promise.reject(error);
   }
 );
 
-const get = (getConfig) =>
-  new Promise((resolve, reject) => {
-    instance.get(getConfig).then(
-      res => {
-        return resolve(res.data);
-      },
-      err => {
-        return reject(err);
-      }
-    );
-  });
-
-const post = (postConfig) => {
+const get = getConfig => {
   return new Promise((resolve, reject) => {
-    instance.post(postConfig).then(
+    instance({ method: 'get', ...getConfig }).then(
       res => {
-        return resolve(res.data);
+        resolve(res.data);
       },
       err => {
-        return reject(err);
+        reject(err);
       }
     );
   });
 };
 
-function checkUrl(url) {
-  if (url && url.slice(0, 1) !== '/') return '/' + url;
-  else return url;
+const post = postConfig => {
+  return new Promise((resolve, reject) => {
+    instance({ method: 'post', ...postConfig }).then(
+      res => {
+        resolve(res.data);
+      },
+      err => {
+        reject(err);
+      }
+    );
+  });
+};
+
+function checkUrl(config) {
+  if (config.url && config.url.slice(0, 1) !== '/') {
+    config.url = '/' + config.url;
+  }
+  return config;
+}
+
+function checkContentType(config) {
+  if (
+    config.data &&
+    Object.keys(config.data).length > 0 &&
+    config.headers['Content-Type'] === 'application/x-www-form-urlencoded'
+  ) {
+    config.data = qs.stringify(config.data);
+  }
+  return config;
 }
 
 export default {
