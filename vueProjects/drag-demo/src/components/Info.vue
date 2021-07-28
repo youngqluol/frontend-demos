@@ -2,18 +2,21 @@
   <div class="info-page">
     <button @click="getInfo">点击请求</button>
     <button @click="postInfo">点击post</button>
+    <button @click="addInfo">添加数据</button>
     <div>{{ info }}</div>
     <div>{{ postRes }}</div>
+    <div>{{ addRes }}</div>
   </div>
 </template>
 <script>
-import { getCommonInfo, postInfo } from '../api';
+import { getCommonInfo, postInfo, addUserInfo } from '../api';
 
 export default {
   data() {
     return {
       info: null,
-      postRes: null
+      postRes: null,
+      addRes: null
     };
   },
   methods: {
@@ -31,6 +34,16 @@ export default {
       postInfo()
         .then(res => {
           this.postRes = res;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+
+    addInfo() {
+      addUserInfo()
+        .then(res => {
+          this.addRes = res;
         })
         .catch(err => {
           console.log(err);

@@ -19,3 +19,14 @@ export function postInfo() {
     }
   });
 }
+
+// 增加数据
+export function addUserInfo() {
+  return request.post({
+    url: 'user/add',
+    data: {
+      age: 19,
+      name: 'lyq'
+    }
+  });
+}
