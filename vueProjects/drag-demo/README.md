@@ -25,8 +25,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### todo
 ##### 一、node服务
-1. 连接数据库（mongondb）
+1. mongondb由本地改为上云
 2. 接入日志打印，包括：错误、请求
+3. 错误处理
+4. server目录单独做成一个项目
+
 
 
 ### issues
