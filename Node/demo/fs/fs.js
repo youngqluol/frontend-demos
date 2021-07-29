@@ -17,7 +17,7 @@ const exec = require('child_process').exec;
 
 /**
  * 文件读、写、复制、删除、追加、修改、重命名
- * 文件夹创建、删除
+ * 文件夹读、创建、删除
 */
 // 1. 同步读写
 // const source = fs.readFileSync(resolvePath('./fs.js')); // 返回的是一个Buffer对象
@@ -55,6 +55,8 @@ const exec = require('child_process').exec;
 // 5. 删除文件、文件夹
 // fs.unlinkSync(resolvePath('./newDir/test.js')); // 删除文件
 // fs.rmdirSync('./newDir'); // 删除目录
+
+// fs.readdirSync // 读取文件夹
 
 // 6. 文件追加
 // const context = `console.log(111)`;

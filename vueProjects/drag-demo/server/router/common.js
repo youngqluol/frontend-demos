@@ -1,13 +1,7 @@
 const koaRouter = require('koa-router');
 const router = koaRouter();
-const DemoModal = require('../db/modal');
-const {
-  query,
-  save,
-  update,
-  updateOne,
-  deleteOne
-} = require('../db/operation');
+const path = require('path');
+const fs = require('fs');
 
 router.get('/', async (ctx, next) => {
   ctx.body = '首页';
@@ -34,34 +28,15 @@ router.post('/submit/info', async (ctx, next) => {
   };
 });
 
-// 增
-router.post('/user/add', async (ctx, next) => {
-  const { age, name } = ctx.request.body;
-  if (age && name) {
-    const demoModal = new DemoModal({
-      name,
-      age
-    });
-    const res = await save(demoModal);
-    ctx.body = {
-      status: 200,
-      results: res
-    };
-  } else {
-    ctx.body = {
-      status: 200,
-      message: '参数有误'
-    };
+fs.readdirSync(resolve('./controllers')).forEach((file) => {
+  if (file.indexOf('.js')) {
+    let controller = require(path.join(__dirname, 'controllers', file));
+    router.use(controller.routes(), controller.allowedMethods());
   }
 });
 
-// 删
-router.post('/user/delete', async (ctx, next) => {});
-
-// 改
-router.post('/user/update', async (ctx, next) => {});
-
-// 查
-router.post('/user/query', async (ctx, next) => {});
+function resolve(name) {
+  return path.resolve(__dirname, name);
+}
 
 module.exports = router;
