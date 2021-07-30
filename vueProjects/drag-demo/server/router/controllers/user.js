@@ -1,5 +1,5 @@
 const router = require('koa-router')();
-// const DemoModal = require('../../db/modal'); // 连接数据库后再注开这里
+const DemoModal = require('../../db/modal'); // 连接数据库后再注开这里
 const {
   query,
   save,
