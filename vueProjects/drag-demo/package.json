@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "server": "nodemon server/index.js",
+    "server": "node app/index.js",
     "serve": "vue-cli-service serve",
     "build:clean": "vue-cli-service build --no-clean",
     "build": "vue-cli-service build",
@@ -17,6 +17,7 @@
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0",
+    "log4js": "^6.3.0",
     "mongoose": "^5.13.3",
     "qs": "^6.10.1",
     "vue": "^2.6.11",
