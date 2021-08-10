@@ -2,6 +2,7 @@
   <div class="page-home">
     <hello-world></hello-world>
     <button @click="jump">跳转信息页</button>
+    <button @click="show">点击</button>
   </div>
 </template>
 <script>
@@ -13,11 +14,15 @@ export default {
   },
   data() {
     return {
+      $test: ''
     };
   },
   methods: {
     jump() {
       this.$router.push({name: 'info'});
+    },
+    show() {
+      console.log(this.$options); 
     }
   }
 };

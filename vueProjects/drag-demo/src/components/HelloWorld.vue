@@ -33,6 +33,7 @@
         <el-button @click="switchData()">改变数据</el-button>
       </el-form-item>
     </el-form>
+    <button @click="test">点击</button>
   </div>
 </template>
 <script>
@@ -129,6 +130,10 @@ export default {
           required: true, message: '域名不能为空', trigger: 'blur'
         }
       });
+    },
+
+    test() {
+      console.log(this.$options);
     }
   }
 };
