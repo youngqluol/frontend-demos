@@ -4,8 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 router.get('/', async (ctx, next) => {
-  ctx.body = '首页';
-  await next();
+  await ctx.render('home');
 });
 
 router.get('/get/commonInfo', async (ctx, next) => {
@@ -31,7 +30,7 @@ router.post('/submit/info', async (ctx, next) => {
 fs.readdirSync(resolve('./controllers')).forEach((file) => {
   if (file.indexOf('.js')) {
     let controller = require(path.join(__dirname, 'controllers', file));
-    router.use(controller.routes(), controller.allowedMethods());
+    controller && router.use(controller.routes(), controller.allowedMethods());
   }
 });
 

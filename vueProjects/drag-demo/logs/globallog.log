@@ -1,1 +1,9 @@
 [2021-08-10T19:15:21.645] [INFO] globallog - /user/add
+[2021-08-11T10:18:34.795] [ERROR] globallog - {"message":"failed to decode"}
+[2021-08-11T10:18:47.385] [ERROR] globallog - {"message":"failed to decode"}
+[2021-08-11T10:19:48.975] [ERROR] globallog - {"message":"failed to decode"}
+[2021-08-11T10:24:42.518] [ERROR] globallog - {"message":"failed to decode"}
+[2021-08-11T10:37:57.776] [ERROR] globallog - {"message":"failed to decode"}
+[2021-08-11T10:37:58.981] [ERROR] globallog - {"message":"failed to decode"}
+[2021-08-11T11:20:21.031] [ERROR] globallog - {}
+[2021-08-11T11:21:39.567] [ERROR] globallog - {}
