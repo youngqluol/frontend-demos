@@ -35,3 +35,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 原因：node版本问题
 - 解决：1. node版本降级至12.16.1或以下 2. 尝试使用koa-cors中间件解决跨域问题
 
+2. 下载less-loader后，报错`TypeError: this.getOptions is not a function`
+- 原因：less-loader版本过高。8.0版本后的配置方式跟之前不一样
+- 解决：1.下载less-loader@6.0.0  2. 重新配置
+
