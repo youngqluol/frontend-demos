@@ -1,8 +1,8 @@
 const path = require('path');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const projectName = require('./package.json').name;
 
-const projectName = require('./package.json').name;
 const fileManagerPlugin = new FileManagerPlugin({
   events: {
     onEnd: {
@@ -31,6 +31,16 @@ if(process.env.npm_config_report) {
 
 module.exports = {
   outputDir: './dist/dist',
+  // css: {
+  //   requireModuleExtension: false,
+  //   // 向预处理器 Loader 传递选项
+  //   loaderOptions: {
+  //     less: {
+  //       lessOptions: {
+  //       }
+  //     }
+  //   }
+  // },
   configureWebpack: {
     plugins,
     resolve: {

@@ -13,7 +13,7 @@ axios
   .then(res => {
     if (res.data) {
       const $ = cheerio.load(res.data);
-      const imgs = $('img');
+      const imgs = $('img'); // 获取所有img标签
       const promises = [];
       imgs.each((i, ele) => {
         promises.push(createImageLoad($(ele)));
