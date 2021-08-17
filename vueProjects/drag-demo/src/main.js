@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import router from './router';
-import Store from './store';
+import store from './store';
 import App from './App.vue';
 import './style/reset.less';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -11,6 +11,6 @@ Vue.use(elementUI);
 
 new Vue({
   router,
-  Store,
+  store,
   render: h => h(App)
 }).$mount('#app');
