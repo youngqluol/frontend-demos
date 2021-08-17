@@ -2,15 +2,25 @@
   <div class="page-home">
     <header>头部</header>
     <section class="main-contaner">
-      <div class="comp-list">组件库</div>
-      <div class="main">画布</div>
+      <div class="comp-list">
+        <comp-list-box></comp-list-box>
+      </div>
+      <div class="main">
+        <display-area-box></display-area-box>
+      </div>
       <div class="editor-area">属性配置</div>
     </section>
   </div>
 </template>
 <script>
+import CompListBox from '../components/CompListBox';
+import DisplayAreaBox from '../components/DisplayAreaBox.vue';
+
 export default {
-  components: {},
+  components: {
+    CompListBox,
+    DisplayAreaBox
+  },
   data() {
     return {};
   },
@@ -27,22 +37,23 @@ export default {
       display: flex;
       justify-content: space-between;
       height: 8rem;
+
       .comp-list {
         width: 2rem;
         height: 100%;
-        border: 1px solid red;
+        border: 1px solid gray;
       }
 
       .main {
         width: 6rem;
         height: 100%;
-        border: 1px solid red;
+        border: 1px solid gray;
       }
 
       .editor-area {
         width: 3rem;
         height: 100%;
-        border: 1px solid red;
+        border: 1px solid gray;
       }
     }
   }

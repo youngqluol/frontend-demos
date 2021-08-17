@@ -39,6 +39,7 @@ export default {
         color: 'red',
         top: 0,
         left: 0,
+        zIndex: 0,
         ...this.propStyle
       };
     }
@@ -46,7 +47,7 @@ export default {
 
   methods: {
     test() {
-      console.log(1);
+      // console.log(1);
     }
   }
 };
@@ -54,6 +55,7 @@ export default {
 <style lang="less" scoped>
   .text-wrapper {
     position: absolute;
+    border: 1px solid gray;
 
     .text {
       width: 100%;
