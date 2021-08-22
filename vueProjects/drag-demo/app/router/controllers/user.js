@@ -8,11 +8,15 @@ router.post('/user/add', async (ctx, next) => {
   logger.info(ctx.req.url);
   const { age, name } = ctx.request.body;
   if (age && name) {
-    const res = await userModelHandler.save({ age, name });
-    ctx.body = {
-      status: 200,
-      results: res
-    };
+    try {
+      const res = await userModelHandler.save({ age, name });
+      ctx.body = {
+        status: 200,
+        results: res
+      };
+    } catch(e) {
+      ctx.body = {error: e};
+    }
   } else {
     ctx.body = {
       status: 200,

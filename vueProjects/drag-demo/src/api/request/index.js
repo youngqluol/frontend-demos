@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 const baseURL = 'api';
-const timeout = 5000;
+const timeout = 80000;
 
 const config = {
   baseURL,
