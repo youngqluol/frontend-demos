@@ -6,7 +6,7 @@ import common from './module/common';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  module: {
+  modules: {
     common
   },
   strict: process.env.NODE_ENV !== 'production', // 生产环境禁止开启严格模式

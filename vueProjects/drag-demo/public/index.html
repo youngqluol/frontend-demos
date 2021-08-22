@@ -16,6 +16,27 @@
       >
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <script type="text/javascript">
+      // rem适配
+      (function(designWidth) {
+        var html = document.documentElement;
+        function recalc() {
+          var dpi =
+            html.clientWidth > designWidth ? designWidth : html.clientWidth;
+          // 计算公式： 1080/360 = 100/fontSize
+          var fontSize = parseFloat((dpi / designWidth) * 100);
+          html.style.fontSize = fontSize + 'px';
+          var changedFontSize = parseFloat(
+            window.getComputedStyle(html)['font-size']
+          );
+          if (Math.abs(fontSize - changedFontSize) > 0.1) {
+            html.style.fontSize =
+              (fontSize * fontSize) / changedFontSize + 'px';
+          }
+        }
+        recalc();
+        window.addEventListener('resize', recalc);
+      })(1080);
+    </script>
   </body>
 </html>
