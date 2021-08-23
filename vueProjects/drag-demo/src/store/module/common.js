@@ -32,9 +32,9 @@ const mutations = {
   },
 
   // 设置组件数据
-  setCurrentCompData(state, targetComp, payload) {
+  setCurrentCompData(state, { index, payload }) {
     for (let key in payload) {
-      targetComp[key] = payload.key;
+      state.currentCompListData[index][key] = payload[key];
     }
   }
 };

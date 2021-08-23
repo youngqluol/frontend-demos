@@ -4648,7 +4648,6 @@
   function initState (vm) {
     vm._watchers = [];
     var opts = vm.$options;
-    console.log(vm);
     if (opts.props) { initProps(vm, opts.props); }
     if (opts.methods) { initMethods(vm, opts.methods); }
     if (opts.data) {

@@ -32,6 +32,6 @@ export const deepClone = obj => {
   return newObj;
 };
 
-export function $(dom) {
-  return document.querySelector(dom);
+export function $(mark) {
+  return document.querySelector(mark);
 }
