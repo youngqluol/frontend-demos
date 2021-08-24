@@ -8,17 +8,32 @@
     <script src="./vue.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <comp-item></comp-item>
+    </div>
+    <!-- comp-item -->
+    <script type="text/x-template" id="comp-item">
+      <div>
+        <div>{{test}}</div>
+        <div>{{computedTest}}</div>
+      </div>
+    </script>
+    <!-- vue code -->
     <script>
-      const comp = Vue.component("slot-comp", {
-        template: `<div class="comp">
-                    <slot>comp text</slot>
-                  </div>`
-      });
+      Vue.component('compItem', {
+        template: '#comp-item',
+        data: function() {
+          return {
+            test: '测试'
+          }
+        },
+        computed: {
+          computedTest() {
+            return this.test + ' computed'
+          }
+        }
+      })
       new Vue({
-        template: `<slot-comp>
-                    slot 文字
-                  </slot-comp>`
       }).$mount("#app");
     </script>
   </body>
