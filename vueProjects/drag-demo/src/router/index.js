@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@src/pages/Home';
 const Info = () => import('@src/components/Info');
+const Test = () => import('@src/pages/test');
 
 Vue.use(Router);
 const router = new Router({
@@ -19,6 +20,11 @@ const router = new Router({
       path: '/info',
       name: 'info',
       component: Info
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test
     },
     {
       path: '*',
