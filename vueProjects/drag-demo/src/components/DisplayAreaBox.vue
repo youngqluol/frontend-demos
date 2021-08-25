@@ -5,11 +5,12 @@
        @mousedown="handleMouseDown($event)">
     <div v-for="(item, index) in currentCompListData"
          :key="index"
+         :class="{borderShow: index === currentClickCompIndex}"
          :style="compBorderStyle[index]"
          class="comp-border">
       <component :is="item.component"
                  :class="item.compClass"
-                 :propStyle="item.propStyle"
+                 :propStyle="{left: 0,top: 0}"
                  v-bind="item.propValue"></component>
     </div>
   </div>
@@ -21,7 +22,8 @@ import { $, throttle } from '../utils';
 export default {
   data() {
     return {
-      compBorderStyle: []
+      compBorderStyle: [],
+      currentClickCompIndex: null
     };
   },
   computed: {
@@ -32,11 +34,11 @@ export default {
 
   watch: {
     currentCompListData: {
-      handler: async function(val) {
+      handler: async function (val) {
         await this.$nextTick();
         this.compBorderStyle = val.map(item => {
           const comp = $(`.${item.compClass}`);
-          const {offsetWidth, offsetHeight} = comp;
+          const { offsetWidth, offsetHeight } = comp;
           item = {
             width: `${offsetWidth}px`,
             height: `${offsetHeight}px`,
@@ -76,6 +78,7 @@ export default {
     },
     handleMouseDown(e) {
       console.log('comp mouse down');
+      this.currentClickCompIndex = null;
       const startX = e.pageX;
       const startY = e.pageY;
       // 记录下当前的鼠标点击位置
@@ -95,6 +98,7 @@ export default {
           parseFloat(mouseTop) <= compStartTop + compHeight;
         // 如果在范围内，说明点击事件是在该组件上触发的
         if (isInHorizontalRange && isInVerticalRange) {
+          this.currentClickCompIndex = index;
           // todo 记录点击的当前组件
           const move = throttle(e => {
             const curX = e.pageX;
@@ -128,6 +132,10 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
+
+    .borderShow {
+      border: 1px solid red;
+    }
 
     .comp-border {
       position: absolute;
