@@ -3,21 +3,26 @@
        @drop="handleDrop"
        @dragover="handleDragOver"
        @mousedown="handleMouseDown($event)">
-    <component :is="item.component"
-               v-for="(item, index) in currentCompListData"
-               :key="index"
-               :class="item.compClass"
-               :propStyle="item.propStyle"
-               v-bind="item.propValue"></component>
+    <div v-for="(item, index) in currentCompListData"
+         :key="index"
+         :style="compBorderStyle[index]"
+         class="comp-border">
+      <component :is="item.component"
+                 :class="item.compClass"
+                 :propStyle="item.propStyle"
+                 v-bind="item.propValue"></component>
+    </div>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex';
-import { $ } from '../utils';
+import { $, throttle } from '../utils';
 
 export default {
   data() {
-    return {};
+    return {
+      compBorderStyle: []
+    };
   },
   computed: {
     ...mapState({
@@ -25,9 +30,29 @@ export default {
     })
   },
 
+  watch: {
+    currentCompListData: {
+      handler: async function(val) {
+        await this.$nextTick();
+        this.compBorderStyle = val.map(item => {
+          const comp = $(`.${item.compClass}`);
+          const {offsetWidth, offsetHeight} = comp;
+          item = {
+            width: `${offsetWidth}px`,
+            height: `${offsetHeight}px`,
+            top: `${item.propStyle.top}`,
+            left: `${item.propStyle.left}`
+          };
+          return item;
+        });
+      },
+      deep: true
+    }
+  },
+
   methods: {
     // 鼠标在编辑区域的相对位置
-    computedMousePositon(e) {
+    computedMousePosition(e) {
       const { pageX, pageY } = e;
       const { top, left } = $('.display-area').getBoundingClientRect();
       return {
@@ -39,7 +64,7 @@ export default {
       e.preventDefault();
       e.stopPropagation();
       const index = e.dataTransfer.getData('index');
-      const { left, top } = this.computedMousePositon(e);
+      const { left, top } = this.computedMousePosition(e);
       this.$store.commit('addComp', {
         index,
         propStyle: { left, top }
@@ -54,7 +79,7 @@ export default {
       const startX = e.pageX;
       const startY = e.pageY;
       // 记录下当前的鼠标点击位置
-      const { left: mouseLeft, top: mouseTop } = this.computedMousePositon(e);
+      const { left: mouseLeft, top: mouseTop } = this.computedMousePosition(e);
       // 点击区域时遍历所有组件位置，判断是否在组件内的点击
       this.currentCompListData.map((item, index) => {
         const { offsetWidth: compWidth, offsetHeight: compHeight } = $(
@@ -71,7 +96,7 @@ export default {
         // 如果在范围内，说明点击事件是在该组件上触发的
         if (isInHorizontalRange && isInVerticalRange) {
           // todo 记录点击的当前组件
-          const move = e => {
+          const move = throttle(e => {
             const curX = e.pageX;
             const curY = e.pageY;
             const top = curY - startY + compStartTop + 'px';
@@ -83,7 +108,7 @@ export default {
                 propStyle: { left, top }
               }
             });
-          };
+          }, 100);
 
           const up = () => {
             document.removeEventListener('mousemove', move);
@@ -103,5 +128,9 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
+
+    .comp-border {
+      position: absolute;
+    }
   }
 </style>
