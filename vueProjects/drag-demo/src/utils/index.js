@@ -32,6 +32,46 @@ export const deepClone = obj => {
   return newObj;
 };
 
+/**
+* @params {String}
+*/
 export function $(mark) {
   return document.querySelector(mark);
+}
+
+/** 
+* 防抖
+*/
+export function debounce(fn, delay) {
+  let timer = null;
+  return function(...params) {
+    if(timer) {
+      clearTimeout(timer);
+    };
+    timer = setTimeout(() => {
+      fn(...params);
+      timer = null;
+    }, delay);
+  };
+}
+
+/** 
+* 节流
+ */
+export function throttle(fn, delay) {
+  let timer = null;
+  return function(...params) {
+    if(timer) return;
+    fn(...params);
+    timer = setTimeout(() => {
+      timer = null;
+    }, delay);
+  };
+}
+
+export function isDef(target) {
+  return target !== null && target !== undefined;
+}
+
+export function sleep(time) {
 }
