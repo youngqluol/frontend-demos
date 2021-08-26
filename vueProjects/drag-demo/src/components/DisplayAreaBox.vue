@@ -52,7 +52,6 @@ export default {
         if (this.currentClickCompIndex === val.length - 1) return;
         this.currentClickCompIndex = val.length - 1;
         this.$store.commit('setVuexState', {
-          currentCompIndex: val.length - 1,
           newestCompIndex: val.length - 1
         });
         // 设置组件的初始宽高
@@ -62,8 +61,8 @@ export default {
               width: this.compBorderStyle[this.currentClickCompIndex].width,
               height: this.compBorderStyle[this.currentClickCompIndex].height
             }
-            
-          }
+          },
+          index: val.length - 1
         });
       },
       deep: true
@@ -97,7 +96,10 @@ export default {
     handleMouseDown(e) {
       console.log('comp mouse down');
       this.currentClickCompIndex = null;
-      this.$store.commit('setVuexState', { currentCompIndex: null, newestCompIndex: null });
+      this.$store.commit('setVuexState', {
+        currentCompIndex: null,
+        newestCompIndex: null
+      });
       const startX = e.pageX;
       const startY = e.pageY;
       // 记录下当前的鼠标点击位置
@@ -129,9 +131,8 @@ export default {
             // 修改当前组件样式
             // TODO 边界判断（1. 上左右：避免超出编辑区域；2. 下：超出后增加编辑区域整体高度）
             this.$store.commit('setCurrentCompData', {
-              payload: {
-                propStyle: { left, top }
-              }
+              payload: { propStyle: { left, top } },
+              index
             });
           }, 100);
 
