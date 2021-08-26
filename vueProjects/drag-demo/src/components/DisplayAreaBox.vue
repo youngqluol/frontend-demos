@@ -47,6 +47,9 @@ export default {
           };
           return item;
         });
+        const index = val.length - 1;
+        this.currentClickCompIndex = index;
+        this.$store.commit('setVuexState', {currentCompIndex: index});
       },
       deep: true
     }
@@ -79,6 +82,7 @@ export default {
     handleMouseDown(e) {
       console.log('comp mouse down');
       this.currentClickCompIndex = null;
+      this.$store.commit('setVuexState', {currentCompIndex: null});
       const startX = e.pageX;
       const startY = e.pageY;
       // 记录下当前的鼠标点击位置
@@ -98,14 +102,16 @@ export default {
           parseFloat(mouseTop) <= compStartTop + compHeight;
         // 如果在范围内，说明点击事件是在该组件上触发的
         if (isInHorizontalRange && isInVerticalRange) {
+          // 记录点击的当前组件
           this.currentClickCompIndex = index;
-          // todo 记录点击的当前组件
+          this.$store.commit('setVuexState', {currentCompIndex: index});
           const move = throttle(e => {
             const curX = e.pageX;
             const curY = e.pageY;
             const top = curY - startY + compStartTop + 'px';
             const left = curX - startX + compStartLeft + 'px';
             // 修改当前组件样式
+            // TODO 边界判断（1. 上左右：避免超出编辑区域；2. 下：超出后增加编辑区域整体高度）
             this.$store.commit('setCurrentCompData', {
               index,
               payload: {

@@ -8,18 +8,22 @@
       <div class="main">
         <display-area-box></display-area-box>
       </div>
-      <div class="editor-area">属性配置</div>
+      <div class="editor-area">
+        <comp-config-box></comp-config-box>
+      </div>
     </section>
   </div>
 </template>
 <script>
 import CompListBox from '../components/CompListBox';
 import DisplayAreaBox from '../components/DisplayAreaBox.vue';
+import CompConfigBox from '../components/CompConfigBox.vue';
 
 export default {
   components: {
     CompListBox,
-    DisplayAreaBox
+    DisplayAreaBox,
+    CompConfigBox
   },
   data() {
     return {};
