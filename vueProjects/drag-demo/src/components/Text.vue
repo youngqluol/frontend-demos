@@ -34,8 +34,8 @@ export default {
   computed: {
     computedStyle() {
       return {
-        width: '1rem',
-        height: '0.2rem',
+        width: '100px',
+        height: '20px',
         color: 'red',
         top: 0,
         left: 0,

@@ -5,7 +5,8 @@ import { deepClone } from '../../utils';
 const state = {
   compListData: [...compListData],
   currentCompListData: [],
-  currentCompIndex: null
+  currentCompIndex: null, // 当前点击的组件索引
+  newestCompIndex: null // 最新添加的组件索引
 };
 
 const getters = {};
@@ -33,9 +34,12 @@ const mutations = {
   },
 
   // 设置组件数据
-  setCurrentCompData(state, { index, payload }) {
+  setCurrentCompData(state, { payload, index }) {
     for (let key in payload) {
-      state.currentCompListData[index][key] = payload[key];
+      state.currentCompListData[index][key] = {
+        ...state.currentCompListData[index][key],
+        ...payload[key]
+      };
     }
   }
 };
