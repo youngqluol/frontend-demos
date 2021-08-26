@@ -4,7 +4,8 @@ import { deepClone } from '../../utils';
 
 const state = {
   compListData: [...compListData],
-  currentCompListData: []
+  currentCompListData: [],
+  currentCompIndex: null
 };
 
 const getters = {};
@@ -22,11 +23,11 @@ const mutations = {
     ).length;
     let target = deepClone(state.compListData[index]);
     console.log('length', length);
-    // 保证组件渲染时key值唯一
+    // 保证组件渲染时key值及样式名唯一
     if (length > 0) {
-      target.name = target.name + `-${length + 1}`;
+      target.name += `-${length + 1}`;
+      target.compClass += `-${length + 1}`;
     }
-    // todo 判断是否越界
     target.propStyle = propStyle; // 设置样式
     state.currentCompListData.push(target);
   },
