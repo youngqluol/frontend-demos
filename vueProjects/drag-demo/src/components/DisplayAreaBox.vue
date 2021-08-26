@@ -5,7 +5,7 @@
        @mousedown="handleMouseDown($event)">
     <div v-for="(item, index) in currentCompListData"
          :key="index"
-         :class="{borderShow: index === currentClickCompIndex}"
+         :class="{borderShow: index === currentClickCompIndex || index === newestCompIndex}"
          :style="compBorderStyle[index]"
          class="comp-border">
       <component :is="item.component"
@@ -28,6 +28,8 @@ export default {
   },
   computed: {
     ...mapState({
+      newestCompIndex: state => state.common.newestCompIndex,
+      compListData: state => state.common.compListData,
       currentCompListData: state => state.common.currentCompListData
     })
   },
@@ -47,9 +49,22 @@ export default {
           };
           return item;
         });
-        const index = val.length - 1;
-        this.currentClickCompIndex = index;
-        this.$store.commit('setVuexState', {currentCompIndex: index});
+        if (this.currentClickCompIndex === val.length - 1) return;
+        this.currentClickCompIndex = val.length - 1;
+        this.$store.commit('setVuexState', {
+          currentCompIndex: val.length - 1,
+          newestCompIndex: val.length - 1
+        });
+        // 设置组件的初始宽高
+        this.$store.commit('setCurrentCompData', {
+          payload: {
+            propStyle: {
+              width: this.compBorderStyle[this.currentClickCompIndex].width,
+              height: this.compBorderStyle[this.currentClickCompIndex].height
+            }
+            
+          }
+        });
       },
       deep: true
     }
@@ -82,7 +97,7 @@ export default {
     handleMouseDown(e) {
       console.log('comp mouse down');
       this.currentClickCompIndex = null;
-      this.$store.commit('setVuexState', {currentCompIndex: null});
+      this.$store.commit('setVuexState', { currentCompIndex: null, newestCompIndex: null });
       const startX = e.pageX;
       const startY = e.pageY;
       // 记录下当前的鼠标点击位置
@@ -101,10 +116,11 @@ export default {
           parseFloat(mouseTop) >= compStartTop &&
           parseFloat(mouseTop) <= compStartTop + compHeight;
         // 如果在范围内，说明点击事件是在该组件上触发的
+        console.log(isInHorizontalRange, isInVerticalRange);
         if (isInHorizontalRange && isInVerticalRange) {
           // 记录点击的当前组件
           this.currentClickCompIndex = index;
-          this.$store.commit('setVuexState', {currentCompIndex: index});
+          this.$store.commit('setVuexState', { currentCompIndex: index });
           const move = throttle(e => {
             const curX = e.pageX;
             const curY = e.pageY;
@@ -113,7 +129,6 @@ export default {
             // 修改当前组件样式
             // TODO 边界判断（1. 上左右：避免超出编辑区域；2. 下：超出后增加编辑区域整体高度）
             this.$store.commit('setCurrentCompData', {
-              index,
               payload: {
                 propStyle: { left, top }
               }
