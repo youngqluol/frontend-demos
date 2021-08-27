@@ -5,7 +5,7 @@
        @mousedown="handleMouseDown($event)">
     <div v-for="(item, index) in currentCompListData"
          :key="index"
-         :class="{borderShow: index === currentClickCompIndex || index === newestCompIndex}"
+         :class="{borderShow: index === currentCompIndex || index === newestCompIndex}"
          :style="compBorderStyle[index]"
          class="comp-border">
       <component :is="item.component"
@@ -28,6 +28,7 @@ export default {
   },
   computed: {
     ...mapState({
+      currentCompIndex: state => state.common.currentCompIndex,
       newestCompIndex: state => state.common.newestCompIndex,
       compListData: state => state.common.compListData,
       currentCompListData: state => state.common.currentCompListData
