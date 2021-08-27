@@ -79,3 +79,5 @@ const exec = require('child_process').exec;
 function resolvePath(filePath) {
   return path.resolve(__dirname, filePath);
 }
+
+const resolve = p => path.resolve(__dirname, p);
