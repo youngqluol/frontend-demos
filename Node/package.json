@@ -10,11 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "yao_webp_converter": "0.0.2"
+    "minimist": "^1.2.5"
   },
   "devDependencies": {
     "chalk": "^4.1.0",
     "cowsay": "^1.4.0",
+    "enquirer": "^2.3.6",
+    "execa": "^5.1.1",
     "inquirer": "^7.3.3",
     "progress": "^2.0.3",
     "tracer": "^1.1.3"
