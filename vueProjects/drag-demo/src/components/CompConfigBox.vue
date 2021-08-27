@@ -3,7 +3,7 @@
     <div v-if="isCompEmpty"
          class="empty">请选择组件</div>
     <div v-else>
-      {{ currentCompInfo }}
+      <!-- {{ currentCompInfo }} -->
       <section>
         <div v-for="item in compConfigData"
              :key="item.name">
@@ -44,7 +44,7 @@ export default {
     }),
     // 当前组件信息
     currentCompInfo() {
-      return deepClone(this.currentCompListData[this.currentCompIndex]) || {};
+      return this.currentCompListData[this.currentCompIndex] || {};
     },
     isCompEmpty() {
       return !isDef(this.currentCompIndex);
