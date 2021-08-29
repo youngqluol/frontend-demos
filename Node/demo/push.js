@@ -82,6 +82,7 @@ async function fn() {
   // 更新commitId
   const context = `exports.commitId = ${commitId + 1}`;
   fs.writeFileSync(resolve('./commitId.js'), context);
+  step('\n 更新commitId成功');
 }
 
 fn();
