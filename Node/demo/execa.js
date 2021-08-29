@@ -1,13 +1,14 @@
-// const execa = require('execa');
+const execa = require('execa');
 const path = require('path');
 const process = require('process');
-const child_process = require('child_process');
-const util = require('util');
-const exec = util.promisify(child_process.exec);
+// const child_process = require('child_process');
+// const util = require('util');
+// const exec = util.promisify(child_process.exec);
 const resolve = p => path.resolve(__dirname, p);
 
 async function fn() {
-  const { stdout } = await exec('ls', {cwd: resolve('../demo')});
+  const { stdout } = await execa('git', ['status'], {cwd: resolve('../demo')});
+  await execa.command('git add .');
   console.log(stdout);
   // await execa('git', ['status']);
   // await execa('git', ['add', '.']);

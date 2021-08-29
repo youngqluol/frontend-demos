@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
 const exec = require('child_process').exec;
+const resolve = p => path.resolve(__dirname, p);
 
 // console.log(process.argv.slice(2)); // 获取命令行中的参数
 
@@ -43,6 +44,8 @@ const exec = require('child_process').exec;
 // fs.renameSync(resolvePath('./newTest.test'), resolvePath('./newTest.js'));
 
 // 4. 创建文件、文件夹
+// fs.mkdirSync();
+fs.writeFileSync(resolve('./new.js'), 'console.log(1)');
 // fs.mkdir(resolvePath('./test'), (err) => {
 //   if(err) {
 //     console.log('创建文件夹错误', err);
@@ -79,5 +82,3 @@ const exec = require('child_process').exec;
 function resolvePath(filePath) {
   return path.resolve(__dirname, filePath);
 }
-
-const resolve = p => path.resolve(__dirname, p);
