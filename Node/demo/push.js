@@ -36,7 +36,7 @@ async function fn() {
   // git diff 判断是否有文件变更
   res = await exec(diffCommand);
 
-  const testRegx = /[*]\/commitId\.js/;
+  const testRegx = /[*]?\/commitId\.js/;
   const diffFiles =
     res.stdout &&
     res.stdout
@@ -55,7 +55,6 @@ async function fn() {
       .filter(Boolean)
       .filter(item => !testRegx.test(item))
   );
-
   // add
   res = await exec(addCommand);
   if (res.err) {
