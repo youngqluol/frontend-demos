@@ -3,6 +3,12 @@ import compListData from '../../config/compListData';
 import { deepClone } from '../../utils';
 
 const state = {
+  configData: {
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0
+  },
   compListData: [...compListData],
   currentCompListData: [],
   currentCompIndex: null, // 当前点击的组件索引
@@ -12,6 +18,10 @@ const state = {
 const getters = {};
 
 const mutations = {
+  updateConfigData(state, { key, value }) {
+    console.log(key, value);
+    state.configData[key] = 1;
+  },
   setVuexState(state, param) {
     for (let key in param) {
       Vue.set(state, key, param[key]);
