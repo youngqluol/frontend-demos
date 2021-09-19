@@ -9,31 +9,53 @@
   </head>
   <body>
     <div id="app">
-      <comp-item></comp-item>
+      <!-- <comp-item></comp-item> -->
     </div>
     <!-- comp-item -->
     <script type="text/x-template" id="comp-item">
       <div>
         <div>{{test}}</div>
         <div>{{computedTest}}</div>
+        <button @click="handleClick">点击+1</button>
+        <div>{{num}}</div>
+        <div>{{watchedData}}</div>
       </div>
     </script>
     <!-- vue code -->
     <script>
-      Vue.component('compItem', {
-        template: '#comp-item',
-        data: function() {
+      const vm = new Vue({
+        template: "#comp-item",
+        data: function () {
           return {
-            test: '测试'
-          }
+            num: 1,
+            test: "测试",
+            watchedData: 0,
+          };
         },
         computed: {
           computedTest() {
-            return this.test + ' computed'
-          }
-        }
-      })
-      new Vue({
+            return this.test + " computed";
+          },
+        },
+        watch: {
+          num(newV, oldV) {
+            // console.log("num value:", newV, oldV);
+            // this.watchedData++;
+          },
+          num2: []
+        },
+        methods: {
+          handleClick() {
+            console.log("click");
+            this.num++;
+            // console.log(this.$data);
+            // console.log(this._data);
+            const _watch = this.$watch('num', () => {
+              this.watchedData++;
+            })
+            // _watch();
+          },
+        },
       }).$mount("#app");
     </script>
   </body>
