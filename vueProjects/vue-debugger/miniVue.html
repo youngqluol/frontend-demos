@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- reactive -->
+    <script>
+      // Dep模块
+      let targetEffect = null;
+      class Dep {
+        constructor(value) {
+          this.effects = new Set();
+          this._value = value;
+        }
+        depend() {
+          if (targetEffect) {
+            this.effects.add(targetEffect);
+          }
+        }
+
+        get value() {
+          this.depend();
+          return this._value;
+        }
+
+        set value(newValue) {
+          this._value = newValue;
+          this.notify();
+        }
+
+        notify() {
+          this.effects.forEach((effect) => effect());
+        }
+      }
+
+      // watchEffect
+      function watchEffect(effect) {
+        targetEffect = effect;
+        effect();
+        targetEffect = null;
+      }
+
+      let dep = new Dep("dep");
+      watchEffect(() => {
+        console.log(dep.value);
+      });
+
+      // proxy
+      function reactive(targetObj) {
+        return new Proxy(targetObj, proxyHandler());
+      }
+
+      function proxyHandler() {
+        return {
+          get: function (target, key, receiver) {
+            console.log("属性读取");
+            return Reflect.get(target, key, receiver);
+          },
+          set: function (target, key, value, receiver) {
+            console.log("属性设置");
+            return Reflect.set(target, key, value, receiver);
+          },
+        };
+      }
+
+      const deps = new WeakMap();
+      function getDep(target, key, receiver) {
+        const targetDep = deps.get(target);
+        if(!targetDep) {
+          deps.set(target, receiver)
+        }
+      }
+
+      // const obj = reactive({
+      //   a: 1
+      // })
+    </script>
+
+    <script>
+      // render
+    </script>
+
+    <script>
+      // mount
+    </script>
+  </body>
+</html>
