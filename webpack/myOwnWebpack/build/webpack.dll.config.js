@@ -5,7 +5,7 @@ const ora = require('ora');
 const chalk = require('chalk');
 
 let WebpackConfig = {
-  mode: 'none',
+  mode: 'production',
   entry: {
     vendor: ['vue']  // 将第三方库放入数组
   },
