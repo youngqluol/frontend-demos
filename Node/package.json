@@ -9,7 +9,7 @@
   "author": "young",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "minimist": "^1.2.5"
   },
   "devDependencies": {
