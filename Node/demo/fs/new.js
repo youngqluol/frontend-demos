@@ -1,1 +1,4 @@
-console.log(1)
+
+console.log(process.env.npm_config_zip);
+
+console.log(process.argv)
